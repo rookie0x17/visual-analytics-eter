@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3: Setting path fills</title>
+        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+        <style type="text/css">
+            
+            .background {
+            background-color:white;
+            pointer-events: all;
+            }
+
+            path {
+            fill: #fff;
+            stroke: white;
+            line-height: 5px;
+            opacity: 50%;
+            }
+
+            .effect-layer{
+            pointer-events:none;
+            }
+
+            div.tooltip {	
+                position: absolute;			
+                text-align: center;			
+                width: 60px;					
+                height: 28px;					
+                padding: 2px;				
+                font: 12px sans-serif;		
+                background: lightsteelblue;	
+                border: 0px;		
+                border-radius: 8px;			
+                pointer-events: none;			
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            //Width and height
+            var w = 1000;
+            var h = 800;
+
+            //Define map projection
+            var projection = d3.geo.azimuthalEquidistant()
+                                   .translate([w/2, h/2])
+                                   .scale([500]);
+
+            //Define path generator
+            var path = d3.geo.path()
+                             .projection(projection);
+
+            //Create SVG element
+            var svg = d3.select("body")
+                        .append("svg")
+                        .attr("width", w)
+                        .attr("height", h)
+                        .attr("class", 'background');
+
+            var div = d3.select("body").append("div")	
+                        .attr("class", "tooltip")				
+                        .style("opacity", 0);
+                        
+
+
+            
+
+            //Load in GeoJSON data
+            d3.json("europe.geojson", function(json) {
+
+                //Bind data and create one path per GeoJSON feature
+                svg.selectAll("path")
+                   .data(json.features)
+                   .enter()
+                   .append("path")
+                   .attr("d", path)
+                   .attr("transform", "translate(0,300)")
+                   .style("fill", "#99cbff")
+                   .on('mouseover', mouseover)
+                   .on('mouseout', mouseout)
+                   .on('click', clicked);
+                   
+
+            });
+
+            function mouseover(d){
+                // Highlight hovered province
+                d3.select(this).style('fill', 'blue');
+                div.transition()		
+                    .duration(200)		
+                    .style("opacity", .8);	
+                div.html(d.properties.NAME + "<br/>" + "ID: " + d.properties.ISO3)	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 30) + "px");		
+
+            }
+
+            function mouseout(d){
+                d3.select(this).style('fill', '#99cbff');
+            }
+
+            function clicked(d){
+                console.log(d.properties.ISO3);
+            }
+
+            
+
+
+            
+
+        </script>
+    </body>
+</html>
