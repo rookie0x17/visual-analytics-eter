@@ -1,6 +1,6 @@
 //Width and height
-var w = 800;
-var h = 600;
+var w = 636;
+var h = 450;
 
 //Define map projection
 /*
@@ -8,7 +8,7 @@ var projection = d3.geo.azimuthalEquidistant()
                        .translate([w/5, h/1.7])
                        .scale([500]);
 */
-var projection = d3.geo.mercator().translate([w/5, h/2.2]).scale([300]);
+var projection = d3.geo.mercator().translate([w/3, h/1.7]).scale([300]);
 
 //Define path generator
 var path = d3.geo.path().projection(projection);
@@ -88,7 +88,7 @@ function mouseoverUni(d){
     div.transition()		
         .duration(200)		
         .style("opacity", .8);	
-    div.html( "ID: " + d.ETER_ID)	
+    div.html(d.institution_name)	
         .style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 100) + "px");		
 
