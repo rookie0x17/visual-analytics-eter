@@ -32,6 +32,7 @@ d3.json("js/europe.geojson", function(json) {
        .data(json.features)
        .enter()
        .append("path")
+       .attr("id" , "map-path")
        .attr("d", path)
        .attr("transform", "translate(0,300)")
        .style("fill", "#99cbff")

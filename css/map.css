@@ -3,7 +3,7 @@
     pointer-events: all;
 }
    
-path {
+#map-path {
 fill: #fff;
 stroke: white;
 line-height: 5px;
