@@ -27,7 +27,7 @@ var div = d3.select("#pca-chart").append("div")
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([-400e+6, 600e+6])
+    .domain([-600e+2, 300e+3])
     .range([ height, 0]);
   svg1.append("g")
     .call(d3.axisLeft(y));
