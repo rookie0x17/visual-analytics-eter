@@ -22,6 +22,7 @@ div.tooltip {
     background: lightgray;	
     border: 0px;		
     border-radius: 8px;			
-    pointer-events: none;			
+    pointer-events: none;
+    		
 }          
                
