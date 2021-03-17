@@ -44,6 +44,9 @@ var div = d3.select("#pca-chart").append("div")
     .selectAll("dot")
     .data(data)
     .enter()
+    .filter(function(d){
+      return d.reference_year == ref_year.value;
+    })
     .append("circle")
       .attr("cx", function (d) { return x(d.x); } )
       .attr("cy", function (d) { return y(d.y); } )

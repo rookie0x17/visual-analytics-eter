@@ -1,3 +1,10 @@
+//global var 
+
+ref_year = document.getElementById("ref_year");
+
+
+
+
 //Width and height
 var w = 636;
 var h = 450;
@@ -21,7 +28,7 @@ var svg = d3.select("#map-chart")
             .attr("class", 'background');
 
 const zoom = d3.zoom()
-.scaleExtent([1, 4])
+.scaleExtent([1, 8])
 .on('zoom', zoomed);
 
 svg.call(zoom);
@@ -55,18 +62,24 @@ d3.csv("data/FINALE.csv", function(rows){
     svg.selectAll("university")
         .data(rows)
         .enter()
+        .filter(function(d){
+           
+            return d.reference_year == ref_year.value;
+        })
         .append("circle")
-        .attr("class","university")
-        .attr("transform", "translate(0,300)")
-        .attr("fill" , "orange")
-        .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
-        .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
-        .attr("r", "1px")
-        .on('mouseover', mouseoverUni)
-        .on('mouseout', mouseoutUni);
+            .attr("class","university")
+            .attr("transform", "translate(0,300)")
+            .attr("fill" , "orange")
+            .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
+            .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
+            .attr("r", "1px")
+            .on('mouseover', mouseoverUni)
+            .on('mouseout', mouseoutUni);
    
 
 });
+
+
 
 function zoomed() {
     svg
@@ -103,7 +116,10 @@ function clicked(d){
     if(!arr_country.includes(d.properties.ISO2)){
         arr_country.push(d.properties.ISO2);
     } else {
-        arr_country.pop(d.properties.ISO2);
+        index = arr_country.indexOf(d.properties.ISO2);
+        if (index > -1) {
+            arr_country.splice(index, 1);
+        }
     }
     drawPCA();
 }
@@ -129,15 +145,8 @@ function mouseoutUni(d){
             
 function drawPCA(){
 
-    console.log("entro");
-    console.log(arr_country);
     var g = d3.selectAll('g')
     g.selectAll("circle")
-    /*
-    .filter(function(d) {
-        return !arr_country.includes(d.country_code);
-    })
-    */
     .remove();
 
     
@@ -159,10 +168,15 @@ function drawPCA(){
         .selectAll("dot")
         .data(data)
         .enter()
-        .append("circle")
         .filter(function(d){
-            return arr_country.includes(d.country_code);
+            if(arr_country.length == 0){
+                return d.reference_year == ref_year.value;
+            } else {
+                return arr_country.includes(d.country_code) && d.reference_year == ref_year.value;
+            }
+            
         })
+        .append("circle")
           .attr("cx", function (d) {return x(d.x); } )
           .attr("cy", function (d) { return y(d.y); } )
           .attr("r", 1.5)
@@ -171,12 +185,46 @@ function drawPCA(){
 
         
         
-    });
-    
+    }); 
+}
 
+function drawMap(){
+
+    var g = d3.selectAll('.university')
+    .remove();
+
+    d3.csv("data/FINALE.csv", function(rows){
+
+        //Bind data and create one path per GeoJSON feature
+        svg.selectAll("university")
+            .data(rows)
+            .enter()
+            .filter(function(d){
+               
+                return d.reference_year == ref_year.value;
+            })
+            .append("circle")
+                .attr("class","university")
+                .attr("transform", "translate(0,300)")
+                .attr("fill" , "orange")
+                .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
+                .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
+                .attr("r", "1px")
+                .on('mouseover', mouseoverUni)
+                .on('mouseout', mouseoutUni);
+       
     
-    
-    
+    });
+
+}
+
+
+ref_year.addEventListener('change', updateCharts);
+
+function updateCharts(e){
+    console.log(e.target.value);
+    drawPCA();
+    drawMap();
 }
             
 
