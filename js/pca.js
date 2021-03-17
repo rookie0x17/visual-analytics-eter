@@ -9,7 +9,11 @@ var svg1 = d3.select("#pca-chart")
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform",
-  "translate(" + margin.left + "," + margin.top + ")");
+  "translate(" + margin.left + "," + margin.top + ")");  
+  
+  
+
+var arr_country = [];
 
 var div = d3.select("#pca-chart").append("div")	
   .attr("class", "tooltip")				
@@ -22,6 +26,7 @@ var div = d3.select("#pca-chart").append("div")
     .domain([-0.1e+9, 2.5e+9])
     .range([ 0, width*2.3 ]);
   svg1.append("g")
+    .attr("id" , "x")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
@@ -30,10 +35,12 @@ var div = d3.select("#pca-chart").append("div")
     .domain([-600e+2, 300e+3])
     .range([ height, 0]);
   svg1.append("g")
+    .attr("id" , "y")
     .call(d3.axisLeft(y));
 
   // Add dots
   svg1.append('g')
+    .attr("id" , "pca-chart-1")
     .selectAll("dot")
     .data(data)
     .enter()
@@ -43,6 +50,7 @@ var div = d3.select("#pca-chart").append("div")
       .attr("r", 1.5)
       .style("fill", "#69b3a2")
       .on('mouseover', mouseover);
+  
  
 
 });
@@ -55,6 +63,10 @@ function mouseover(d){
       .style("opacity", .8);	
   div.html(d.institution_name)	
       .style("left", (d3.event.pageX) + "px")		
-      .style("top", (d3.event.pageY - 100) + "px");		
+      .style("top", (d3.event.pageY - 100) + "px");	
+  
+  console.log(arr_country);
+  
 
 }
+

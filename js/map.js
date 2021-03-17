@@ -80,23 +80,32 @@ function zoomed() {
 
 function mouseOverCount(d){
     // Highlight hovered province
-    d3.select(this).style('fill', 'blue');
+    if(!arr_country.includes(d.properties.ISO2)){
+        d3.select(this).style('fill', 'blue');
+    }
+
     div.transition()		
-        .duration(200)		
-        .style("opacity", .8);	
-    div.html(d.properties.NAME)	
-        .style("left", (d3.event.pageX) + "px")		
-        .style("top", (d3.event.pageY - 100) + "px");
-    
+            .duration(200)		
+            .style("opacity", .8);	
+        div.html(d.properties.NAME)	
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 100) + "px");
 
 }
 
 function mouseOutCount(d){
-    d3.select(this).style('fill', '#99cbff');
+    if(!arr_country.includes(d.properties.ISO2)){
+        d3.select(this).style('fill', '#99cbff');
+    }
 }
 
 function clicked(d){
-    console.log(d.properties.ISO3);
+    if(!arr_country.includes(d.properties.ISO2)){
+        arr_country.push(d.properties.ISO2);
+    } else {
+        arr_country.pop(d.properties.ISO2);
+    }
+    drawPCA();
 }
 
 function mouseoverUni(d){
@@ -118,7 +127,57 @@ function mouseoutUni(d){
 
             
             
-            
+function drawPCA(){
+
+    console.log("entro");
+    console.log(arr_country);
+    var g = d3.selectAll('g')
+    g.selectAll("circle")
+    /*
+    .filter(function(d) {
+        return !arr_country.includes(d.country_code);
+    })
+    */
+    .remove();
+
+    
+    d3.csv("data/pca.csv", function(data) {
+
+        var x = d3.scaleLinear()
+        .domain([-0.1e+9, 2.5e+9])
+        .range([ 0, width*2.3 ]);
+     
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([-600e+2, 300e+3])
+        .range([ height, 0]);
+    
+
+
+        var g = d3.select('#pca-chart-1')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+        .filter(function(d){
+            return arr_country.includes(d.country_code);
+        })
+          .attr("cx", function (d) {return x(d.x); } )
+          .attr("cy", function (d) { return y(d.y); } )
+          .attr("r", 1.5)
+          .style("fill", "#69b3a2")
+          .on('mouseover', mouseover);
+
+        
+        
+    });
+    
+
+    
+    
+    
+}
             
 
 
