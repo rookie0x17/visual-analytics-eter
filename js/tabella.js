@@ -1,18 +1,20 @@
-d3.csv("data/db-finale.csv", function(error, data) {
+d3.csv("data/statistic_per_uni.csv", function(error, data) {
     if (error) throw error;
     
+
     var sortAscending = true;
-    var table = d3.select('#tabella').append('table').attr("height" , "100%").attr("weight" , "100%");
+    var table = d3.select("#tabella2").append('table').attr("height" , "612").attr("weight" , "612").attr("overflow","auto");
     var titles_tocatch = {
         institution_name: "vuoto",
-        reference_year: "vuoto",
-        score_final: 14,
+        missing_perc: 0,
+        cons_perc:0,
+        timeillnes_occ:0,
     };
     
     var titles = d3.keys(titles_tocatch);
     var headers = table.append('thead').append('tr')
                      .selectAll('th')
-                     .data(titles).enter()
+                     .data(["Institution name" , "Missing value" , "Consistency" , "Timeilness"]).enter()
                      .append('th')
                      .text(function (d) {
                           return d;
@@ -35,8 +37,11 @@ d3.csv("data/db-finale.csv", function(error, data) {
 
 
     var rows = table.append('tbody').selectAll('tr')
-                 .data(data).enter()
+                 .data(data).enter().filter(function(d){
+                    return d.reference_year == 2017;
+                 })
                  .append('tr');
+
     rows.selectAll('td')
       .data(function (d) {
           return titles.map(function (k) {
@@ -48,6 +53,17 @@ d3.csv("data/db-finale.csv", function(error, data) {
           return d.name;
       })
       .text(function (d) {
-          return d.value;
-      });
+          if(d.name == "missing_perc" || d.name == "cons_perc"){
+            return d.value*100 + "%";
+          } else if(d.name == "timeillnes_occ") {
+            return Math.trunc(d.value) + " of " + "7";
+          } else {
+              return d.value;
+          }
+      })
+      .style("allign" , "center");
+  
+
 });
+
+

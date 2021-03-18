@@ -24,5 +24,59 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;
     		
-}          
-               
+}     
+
+* { 
+    margin: 0; 
+    padding: 0; 
+   }
+   body { 
+     font: 14px/1.4 Georgia, Serif; 
+   }
+  #page-wrap {
+    margin: 50px;
+  }
+  p {
+   margin: 20px 0; 
+  }
+
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+      width: 100%; 
+      border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+      background: #eee; 
+  }
+  th { 
+      background: #333; 
+      color: white; 
+      font-weight: bold; 
+      cursor: s-resize;
+      background-repeat: no-repeat;
+      background-position: 3% center;
+  }
+  td, th { 
+      padding: 6px; 
+      border: 1px solid #ccc; 
+      text-align: left; 
+  }
+  
+  
+  
+  tbody {
+    display: block;
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+}
+    thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;/* even columns width , fix width of table too*/
+}
+
+ 
