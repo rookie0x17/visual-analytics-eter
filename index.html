@@ -62,13 +62,30 @@
           </div>
         </div>
       </div>
+	
+	
+	
+	<div class="container-fluid">
+        <div class="row">
+		<div class="col-md-4" style="text-align: center; align-self: center;">
+                                <label style="font-size: 0.8em;"><b>Option:</b>
+                                    <select id="var-select" class="form-control">
+                                        <option selected value="Financial">Financial</option>
+                                        <option value="Educational">Educational</option>
+                                        <option value="Instruction">Instruction</option>
+                                        
 
+                                    </select>
+                                </label>
+                            </div>
+          
+           <h3 align="center">Heatmap</h3>
+           <div id="heatmap"></div>
+          
+		</div>
+	</div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-4">
-           <h3 align="center">Heatmap</h3>
-           <div id="heat-map"></div>
-          </div>
           <div class="col-lg-4">
             <h3 align="center">Radial</h3>
             <div id="radial"></div>
@@ -85,6 +102,7 @@
 <script type="text/javascript" src="js/map.js"></script> 
 <script type="text/javascript" src="js/pca.js"></script> 
 <script type="text/javascript" src="js/tabella.js"></script>
+<script type="text/javascript" src="js/heatmap.js"></script>
 <link href="css/map.css" rel="stylesheet" type="text/css">
 <script>
   var arr_country = [];
