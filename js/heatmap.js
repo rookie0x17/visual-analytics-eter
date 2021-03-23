@@ -13,12 +13,12 @@ var myVars = ["Zero Values", "Missing Values", "% of Total Values", "Total Zero 
 
 	// set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 30, left: 90},
-  width = 1400 - margin.left - margin.right,
+  width2 = 1400 - margin.left - margin.right,
   height = 450 - margin.top - margin.bottom;
   
  var svg2 = d3.selectAll("#heatmap")
 .append("svg")
-  .attr("width", width + margin.left + margin.right)
+  .attr("width", width2 + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   
    // create a tooltip
@@ -55,7 +55,7 @@ if (value=='Financial'){
 
 // Build X scales and axis:
 var x = d3.scaleBand()
-  .range([ 0, width ])
+  .range([ 0, width2 ])
   .domain(myGroups)
   .padding(0.01);
 svg2.append("g")
@@ -83,8 +83,8 @@ var myColor = d3.scaleLinear()
   var mousemove = function(d) {
     tooltip
       .html("The exact value of<br>this cell is: " + d.value)
-      .style("left", (d3.mouse(this)[0]+70) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
+      .style("left", (d3.event.pageX) + "px")     
+      .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
     tooltip.style("opacity", 0)
@@ -112,7 +112,7 @@ if (value=='Educational'){
 	
 // Build X scales and axis:
 var x = d3.scaleBand()
-  .range([ 0, width ])
+  .range([ 0, width2 ])
   .domain(myGroups2)
   .padding(0.01);
 svg2.append("g")
@@ -140,8 +140,8 @@ var myColor = d3.scaleLinear()
   var mousemove = function(d) {
     tooltip
       .html("The exact value of<br>this cell is: " + d.value)
-      .style("left", (d3.mouse(this)[0]+70) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
+      .style("left", (d3.event.pageX) + "px")     
+      .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
     tooltip.style("opacity", 0)
@@ -169,7 +169,7 @@ if (value=='Instruction'){
 	
 // Build X scales and axis:
 var x = d3.scaleBand()
-  .range([ 0, width ])
+  .range([ 0, width2 ])
   .domain(myGroups3)
   .padding(0.01);
 svg2.append("g")
@@ -197,8 +197,8 @@ var myColor = d3.scaleLinear()
   var mousemove = function(d) {
     tooltip
       .html("The exact value of<br>this cell is: " + d.value)
-      .style("left", (d3.mouse(this)[0]+70) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
+      .style("left", (d3.event.pageX) + "px")     
+      .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
     tooltip.style("opacity", 0)
