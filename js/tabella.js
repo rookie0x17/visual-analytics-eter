@@ -20,14 +20,28 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
                           return d;
                       })
                      .on('click', function (d) {
+                       var cerca = "";
+                      if(d == "Institution name"){
+                        cerca = "institution_name" ;
+                      } else if (d == "Missing value") {
+                        cerca = "missing_perc";
+                      } else if (d == "Consistency"){
+                        cerca = "cons_perc"
+                      } else if (d == "Timeilness"){
+                        cerca = "timeillnes_occ"
+                      }
+
+
+
                          headers.attr('class', 'header');
                          
                          if (sortAscending) {
-                           rows.sort(function(a, b) { return b[d] < a[d]; });
+                           rows.sort(function(a, b) { return b[cerca] < a[cerca]; });
                            sortAscending = false;
                            this.className = 'aes';
+                           console.log("qui");
                          } else {
-                           rows.sort(function(a, b) { return b[d] > a[d]; });
+                           rows.sort(function(a, b) { return b[cerca] > a[cerca]; });
                            sortAscending = true;
                            this.className = 'des';
                          }
@@ -38,9 +52,10 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
 
     var rows = table.append('tbody').selectAll('tr')
                  .data(data).enter().filter(function(d){
-                    return d.reference_year == 2017;
+                    return d.reference_year == ref_year.value;
                  })
-                 .append('tr');
+                 .append('tr')
+                 .attr("class", "row-line");
 
     rows.selectAll('td')
       .data(function (d) {
