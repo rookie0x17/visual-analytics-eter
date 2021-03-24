@@ -78,7 +78,11 @@ var myColor = d3.scaleLinear()
   
    // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
-    tooltip.style("opacity", 1)
+    tooltip
+      .style("opacity", 1)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
   }
   var mousemove = function(d) {
     tooltip
@@ -87,7 +91,11 @@ var myColor = d3.scaleLinear()
       .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
-    tooltip.style("opacity", 0)
+     tooltip
+      .style("opacity", 0)
+    d3.select(this)
+      .style("stroke", "none")
+      .style("opacity", 1)
   }
 	
 
@@ -135,7 +143,11 @@ var myColor = d3.scaleLinear()
 
    // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
-    tooltip.style("opacity", 1)
+    tooltip
+      .style("opacity", 1)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
   }
   var mousemove = function(d) {
     tooltip
@@ -144,7 +156,11 @@ var myColor = d3.scaleLinear()
       .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
-    tooltip.style("opacity", 0)
+     tooltip
+      .style("opacity", 0)
+    d3.select(this)
+      .style("stroke", "none")
+      .style("opacity", 1)
   }
 
   
@@ -192,7 +208,11 @@ var myColor = d3.scaleLinear()
 
    // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
-    tooltip.style("opacity", 1)
+    tooltip
+      .style("opacity", 1)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
   }
   var mousemove = function(d) {
     tooltip
@@ -201,7 +221,11 @@ var myColor = d3.scaleLinear()
       .style("top", (d3.event.pageY - 28) + "px");
   }
   var mouseleave = function(d) {
-    tooltip.style("opacity", 0)
+     tooltip
+      .style("opacity", 0)
+    d3.select(this)
+      .style("stroke", "none")
+      .style("opacity", 1)
   }
 
   
