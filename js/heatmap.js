@@ -4,16 +4,14 @@ type= document.getElementById("var-select")
 // Labels of row and columns
 var myGroups = ["P_E", "N-P_E", "EXP_UN", "TOT_C_E", "CAP_E", "TOT_C_B", "TOT_T_P_F", "STU_F_F", "REV_UN", "TOT_C_REV"]
 var myGroups2 = ["S_WOM_S_5-7", "S_WOM_A_S", "S_FOR_S_5-7", "PHD_I", "E_TOT_I_S","E_TOT_O_S"]
-var myGroups3=["TOT_A_S","TOT_S","LOW_D_D","HIGH_D_D","TOT_S_E_5","TOT_S_E_6",
-"TOT_S_E_7","TOT_S_E_7_L","TOT_S_E_5-7","TOT_G_5","TOT_G_6","TOT_G_7","TOT_G_7_L",
-"TOT_G_5-7","TOT_S_E_8","TOT_G_8"]
+var myGroups3=["TOT_A_S","TOT_S","TOT_S_E_5-7","TOT_G_5-7","TOT_S_E_8","TOT_G_8"]
 
 
 var myVars = ["Zero Values", "Missing Values", "% of Total Values", "Total Zero Missing Values", "% Total Zero Missing Values", "c_val", "s_val", "nc_val", "out_val"]
 
 	// set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 30, left: 90},
-  width2 = 1400 - margin.left - margin.right,
+  width2 = 650 - margin.left - margin.right,
   height = 450 - margin.top - margin.bottom;
   
  var svg2 = d3.selectAll("#heatmap")
@@ -115,7 +113,7 @@ svg2.selectAll()
     
   // add the squares
 }
-if (value=='Educational'){
+if (value=='Other'){
 	
 	
 // Build X scales and axis:
@@ -180,7 +178,7 @@ svg2.selectAll()
       
 }
 
-if (value=='Instruction'){
+if (value=='Educational'){
 	
 	
 // Build X scales and axis:
