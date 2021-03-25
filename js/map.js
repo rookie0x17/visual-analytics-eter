@@ -2,12 +2,36 @@
 
 ref_year = document.getElementById("ref_year");
 
+var margin_radar = {
+    top: 100,
+    right: 100,
+    bottom: 100,
+    left: 100
+},
+    width_radar = Math.min(650, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
+    height_radar = Math.min(650, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
+
+var color = d3.scale.ordinal()
+				.range(["#EDC951","#CC333F","#00A0B0"]);
+
+var radarChartOptions = {
+    w: width_radar,
+    h: height_radar,
+    margin: margin_radar,
+    maxValue: 0.5,
+    levels: 5,
+    roundStrokes: true,
+    color: color
+};
+arr_country=[]
+arr_uni=[]
 
 
 
 //Width and height
 var w = 636;
 var h = 450;
+
 
 //Define map projection
 /*
@@ -36,9 +60,12 @@ svg.call(zoom);
 var div = d3.select("#map-chart").append("div")	
             .attr("class", "tooltip")				
             .style("opacity", 0);
+			
+
             
 //Load in GeoJSON data
 d3.json("js/europe.geojson", function(json) {
+	
 
     //Bind data and create one path per GeoJSON feature
     svg.selectAll("path")
@@ -89,7 +116,6 @@ function zoomed() {
     
     svg
       .selectAll('circle')
-      .style('r' , '0.5px') // To prevent stroke width from scaling
       .attr('transform', d3.event.transform);
   }
 
@@ -127,6 +153,7 @@ function clicked(d){
     }
     drawPCA();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
 }
 
 function mouseoverUni(d){
@@ -165,6 +192,7 @@ function mouseClickUni(d){
     console.log(arr_uni);
     drawPCA();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
 
 }
 
@@ -341,6 +369,7 @@ function updateCharts(e){
     drawPCA();
     drawMap();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     
 }
             
