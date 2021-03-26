@@ -17,17 +17,19 @@ function RadarChart(id, data_uni, data_count, options) {
 // }
 	
 	var alpha = -1;
-	var tip = d3.select("#radial").append("div").attr("class", "tip").style("opacity", 0);
+	var tip = d3.select("#radial")
+	.append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+	
+    .style("padding", "5px")
 
 	
-	var output = data.map(function (obj) {
-		return Object.keys(obj).map(function (key) {
-			return obj[key];
-			});
-		});
-	keys = ["personnel_expenditure(PPP)",
-	"total_academic_staff(FTE)"
-	];
+	
 	
 	newdata=[];
 	
@@ -47,10 +49,21 @@ function RadarChart(id, data_uni, data_count, options) {
 			return obj[key];
 			});
 		});
-	keys = ["personnel_expenditure(PPP)"];
+	keys = ["personnel_expenditure(PPP)",
+	"total_academic_staff(FTE)"
+	];
 	
 	console.log(output);
 	
+	for (i = 0; i < output.length; i++) {
+			for (j = 0; j < 41; j++) {
+				output[i][j]=output[i][j].replace("," , ".")
+		
+		}
+		
+		}
+		
+		
 	out = [];
 		out2 = [];
 		
@@ -59,24 +72,24 @@ function RadarChart(id, data_uni, data_count, options) {
 		for (i = 0; i < newdata.length; i++) {
 			
 			out.push([{
-				axis: "personnel_expenditure(PPP)",
-				value: parseFloat(output[i][16] )
+				axis: "total_current_expenditure(PPP)",
+				value: parseFloat(output[i][12] )
 			},
 			{
-				axis: "non-personnel_expenditure(PPP)",
-				value: parseFloat(output[i][15])
+				axis: "total_core_budget(PPP)",
+				value: parseFloat(output[i][14])
 			},
 			{
-				axis: "revenue_unclassified(PPP)",
+				axis: "total_current_revenue",
 				value: parseFloat(output[i][18])
 			},
 			{
-				axis: "total_current_expenditure(PPP)",
-				value: parseFloat(output[i][25])
+				axis: "total_third_party_funding(PPP)",
+				value: parseFloat(output[i][15])
 			},
 			{
-				axis: "total_current_revenues(PPP)",
-				value: parseFloat(output[i][26])
+				axis: "student_fees_funding(PPP)",
+				value: parseFloat(output[i][16])
 			}
 
 
@@ -104,6 +117,111 @@ function RadarChart(id, data_uni, data_count, options) {
 		
 		
 	}
+	
+	if (type.value=='Educational'){
+	
+		for (i = 0; i < newdata.length; i++) {
+			
+			out.push([{
+				axis: "total_academic_staff(FTE)",
+				value: parseFloat(output[i][19]) 
+			},
+			{
+				axis: "total_student_enrolled_ISCED_5-7",
+				value: parseFloat(output[i][27])
+			},
+			{
+				axis: "total_graduated_ISCED_5-7",
+				value: parseFloat(output[i][32])
+			},
+			{
+				axis: "total_student_enrolled_ISCED_8",
+				value: parseFloat(output[i][33])
+			},
+			{
+				axis: "total_graduated_ISCED_8",
+				value: parseFloat(output[i][34])
+			}
+
+
+
+			])
+
+		}
+		
+		for (i = 0; i < out.length; i++) {
+			for (j = 0; j < 5; j++) {
+				if(isNaN(out[i][j].value))
+					out[i][j].value=0;
+		
+		}
+		
+		}
+	
+	
+
+		data = out;
+		console.log(data);
+		var allAxis = (data[0].map(function(i, j){return i.axis}))
+		console.log(allAxis);
+		
+		
+		
+	}
+	
+	if (type.value=='Other'){
+	
+		for (i = 0; i < newdata.length; i++) {
+			
+			out.push([{
+				axis: "share_of_woman_academic_staff",
+				value: parseFloat(output[i][36])
+			},
+			{
+				axis: "share_of_women_students_ISCED_5-7",
+				value: parseFloat(output[i][35]) 
+			},
+			{
+				axis: "share_of_foreign_students_ISCED_5-7",
+				value: parseFloat(output[i][37])
+			},
+			
+			{
+				axis: "PhD intensity",
+				value: parseFloat(output[i][38])
+			}
+			
+
+
+
+			])
+
+		}
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			for (j = 0; j < 4; j++) {
+				if(isNaN(out[i][j].value))
+					out[i][j].value=0;
+		
+		}
+		
+		}
+	
+	
+
+		data = out;
+		console.log(data);
+		var allAxis = (data[0].map(function(i, j){return i.axis}))
+		console.log(allAxis);
+		
+		
+		
+	}
+	
+	
+	
 	
 	var cfg = {
 	 w: 600,				//Width of the circle
@@ -259,6 +377,63 @@ function RadarChart(id, data_uni, data_count, options) {
 		.style("fill", function(d,i) { return cfg.color(i); })
 		.style("fill-opacity", cfg.opacityArea)
 		.on('mouseover', function (d,i){
+			
+			var vegeta = d.map(function (obj) {
+					return Object.keys(obj).map(function (key) {
+						//console.log(obj[key]);
+						return obj[key];
+					});
+				});
+				var goku;
+				for (ix = 0; ix < output.length; ix++) {
+					//console.log(vegeta[1][1])
+					//console.log(output[ix][15])
+					if (type.value=='Educational'){
+					
+					if(isNaN(parseFloat(output[ix][27])))
+					output[ix][27]=0;
+					if ( vegeta[1][1] == parseFloat(output[ix][27])) {
+						goku = output[ix][2];
+					
+				}
+				}
+				if (type.value=='Financial'){
+					
+					if(isNaN(parseFloat(output[ix][14])))
+					output[ix][14]=0;
+					if ( vegeta[1][1] == parseFloat(output[ix][14])) {
+						goku = output[ix][2];
+					
+				}
+				}
+				
+				if (type.value=='Other'){
+					
+					if(isNaN(parseFloat(output[ix][35])))
+					output[ix][35]=0;
+					if ( vegeta[1][1] == parseFloat(output[ix][35])) {
+						goku = output[ix][2];
+					
+				}
+				}
+				
+				}
+				
+				
+				p = $("path")
+				//console.log(p);
+				pos = p.position();
+				//console.log(pos.top);
+				//Dim all blobs
+				console.log(goku);
+				//console.log(pos);
+				tip.html(goku)
+					//.style("left",pos.left  + "px")
+					//.style("top", pos.top + "px")
+					.style("opacity", 1)  
+					.style("left", (d3.event.pageX) + "px")     
+					.style("top", (d3.event.pageY - 28) + "px");					
+      
 			//Dim all blobs
 			d3.selectAll(".radarArea")
 				.transition().duration(200)
@@ -269,6 +444,8 @@ function RadarChart(id, data_uni, data_count, options) {
 				.style("fill-opacity", 0.7);	
 		})
 		.on('mouseout', function(){
+			tip
+      .style("opacity", 0)
 			//Bring back all blobs
 			d3.selectAll(".radarArea")
 				.transition().duration(200)
