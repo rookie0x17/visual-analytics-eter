@@ -189,11 +189,11 @@ function mouseClickUni(d){
             arr_uni.splice(index, 1);
         }
     }
-    console.log(arr_uni);
+    
     drawPCA();
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
-
+    drawTimeline();
 }
 
             
@@ -371,6 +371,93 @@ function updateCharts(e){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     
+}
+
+function drawTimeline(){
+
+    
+
+      
+      
+d3.csv("data/statistic_per_uni.csv", function(data) {
+
+    d3.selectAll("#line-uni").remove();
+    d3.selectAll("#point-uni").remove();
+    var dataReady = undefined ;
+
+// List of groups (here I have one group per column)
+var allGroup = ["missing_perc", "cons_perc"];
+    
+// Reformat the data: we need an array of arrays of {x, y} tuples
+    dataReady = allGroup.map( function(grpName) { // .map allows to do something for each element of the list
+    return {
+    name: grpName,
+    values: data.filter(function(d){
+        if(arr_uni.length == 0){
+            return false;
+        } else {
+            return arr_uni.slice(-1) == d.ETER_ID ;
+        }
+        
+    }).map(function(d) {
+        return {time: d.reference_year, value: +d[grpName] * 100};
+           })
+    };
+});   
+
+console.log(dataReady);
+// A color scale: one color for each group
+var myColor = d3.scaleOrdinal()
+  .domain(allGroup)
+  .range(d3.schemeSet2);
+
+var years = [2011,2017];
+// Add X axis --> it is a date format
+var x6 = d3.scaleLinear()
+  .domain(years)
+  .range([ 0, 500 ]);
+
+
+  var y6 = d3.scaleLinear()
+  .domain( [0,100])
+  .range([ height6, 0 ]);
+
+
+
+  var line = d3.line()
+  .x(function(d) { return x6(+d.time) })
+  .y(function(d) { return y6(+d.value) });
+svg6.selectAll("myLines")
+  .data(dataReady)
+  .enter()
+  .append("path")
+    .attr("d", function(d){ return line(d.values) } )
+    .attr("stroke", function(d){ return myColor(d.name) })
+    .attr("id" , "line-uni")
+    .style("stroke-width", 4)
+    .style("fill", "none")
+
+    svg6
+    // First we need to enter in a group
+    .selectAll("myDots")
+    .data(dataReady)
+    .enter()
+      .append('g')
+      .style("fill", function(d){ return myColor(d.name) })
+    // Second we need to enter in the 'values' part of this group
+    .selectAll("myPoints")
+    .data(function(d){ return d.values })
+    .enter()
+    .append("circle")
+      .attr("cx", function(d) { return x6(d.time)  })
+      .attr("cy", function(d) { return y6(d.value)  })
+      .attr("r", 5)
+      .attr("id" , "point-uni")
+      .attr("stroke", "white")
+
+
+
+});
 }
             
 

@@ -35,21 +35,21 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
         };
     });   
     
-    console.log(dataReady);
+    
 
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
       .range(d3.schemeSet2);
 
-    var years = [2010,2020];
+    var years = [2011,2017];
     // Add X axis --> it is a date format
     var x6 = d3.scaleLinear()
       .domain(years)
       .range([ 0, 500 ]);
     svg6.append("g")
       .attr("transform", "translate(0," + height6 + ")")
-      .call(d3.axisBottom(x6));
+      .call(d3.axisBottom(x6).ticks(7));
 
       var y6 = d3.scaleLinear()
       .domain( [0,100])
@@ -57,7 +57,7 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
     svg6.append("g")
       .call(d3.axisLeft(y6));
 
-
+    /*
       var line = d3.line()
       .x(function(d) { return x6(+d.time) })
       .y(function(d) { return y6(+d.value) });
@@ -67,6 +67,7 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
       .append("path")
         .attr("d", function(d){ return line(d.values) } )
         .attr("stroke", function(d){ return myColor(d.name) })
+        .attr("id" , "line-uni")
         .style("stroke-width", 4)
         .style("fill", "none")
 
@@ -85,7 +86,8 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
           .attr("cx", function(d) { return x6(d.time)  })
           .attr("cy", function(d) { return y6(d.value)  })
           .attr("r", 5)
-          .attr("stroke", "white")
+          .attr("id" , "point-uni")
+          .attr("stroke", "white")*/
 
    
     
