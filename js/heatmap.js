@@ -18,6 +18,7 @@ var margin = {top: 30, right: 30, bottom: 30, left: 90},
 .append("svg")
   .attr("width", width2 + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
+  .attr("class", 'background');
   
    // create a tooltip
   var tooltip = d3.select("#heatmap")

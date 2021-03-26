@@ -3,6 +3,7 @@
 ref_year = document.getElementById("ref_year");
 button_country_clear = document.getElementById("country-clear");
 button_uni_clear = document.getElementById("uni-clear");
+type= document.getElementById("var-select")
 
 button_country_clear.onclick = function(){
     arr_country=[]
@@ -28,10 +29,10 @@ var margin_radar = {
     top: 100,
     right: 100,
     bottom: 100,
-    left: 100
+    left: 150
 },
-    width_radar = Math.min(650, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
-    height_radar = Math.min(650, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
+    width_radar = Math.min(600, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
+    height_radar = Math.min(350, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
 
 var color = d3.scale.ordinal()
 				.range(["#EDC951","#CC333F","#00A0B0"]);
@@ -392,6 +393,15 @@ function updateCharts(e){
     drawPCA();
     drawMap();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
+    
+}
+
+type.addEventListener('change', updateCharts2);
+
+function updateCharts2(e){
+    console.log(e.target.value);
+   
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     
 }
