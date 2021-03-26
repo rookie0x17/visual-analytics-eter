@@ -1,6 +1,28 @@
 //global var 
 
 ref_year = document.getElementById("ref_year");
+button_country_clear = document.getElementById("country-clear");
+button_uni_clear = document.getElementById("uni-clear");
+
+button_country_clear.onclick = function(){
+    arr_country=[]
+    console.log("clickato");
+    drawPCA();
+    drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
+    drawTimeline();
+    svg.selectAll("path").style("fill", "#99cbff");
+};
+button_uni_clear.onclick = function(){
+    arr_uni=[]
+    console.log("clickato");
+    drawPCA();
+    drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
+    drawTimeline();
+    svg.selectAll(".university").style('fill', 'orange').style('r','0.5px');
+};
+
 
 var margin_radar = {
     top: 100,
@@ -266,7 +288,8 @@ function drawMap(){
                 .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
                 .attr("r", "1px")
                 .on('mouseover', mouseoverUni)
-                .on('mouseout', mouseoutUni);
+                .on('mouseout', mouseoutUni)
+                .on('click' , mouseClickUni);
        
     
     });
