@@ -52,24 +52,35 @@ var div = d3.select("#pca-chart").append("div")
       .attr("cy", function (d) { return y(d.y); } )
       .attr("r", 1.5)
       .style("fill", "#69b3a2")
-      .on('mouseover', mouseover);
+      .on('mouseover', mouseoverPCA)
+      .on('mouseout',mouseoutPCA);
   
  
 
 });
 
-function mouseover(d){
+function mouseoverPCA(d){
   // Highlight hovered province
+
   d3.select(this).style('fill', 'blue');
+  
+
   div.transition()		
       .duration(200)		
       .style("opacity", .8);	
   div.html(d.institution_name)	
       .style("left", (d3.event.pageX) + "px")		
       .style("top", (d3.event.pageY - 100) + "px");	
+
+}
+
+function mouseoutPCA(d){
+  // Highlight hovered province
+
+  d3.select(this).style('fill', '#69b3a2');
   
-  console.log(arr_country);
-  
+
+  	
 
 }
 
