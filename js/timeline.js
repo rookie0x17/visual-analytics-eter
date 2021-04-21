@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin6 = {top: 100, right: 10, bottom: 30, left: 30},
+var margin6 = {top: 70, right: 10, bottom: 30, left: 30},
     width6 = 600 - margin6.left - margin6.right,
     height6 = 400 - margin6.top - margin6.bottom;
 
@@ -13,10 +13,10 @@ var svg6 = d3.select("#timeline")
     .attr("transform",
           "translate(" + margin6.left + "," + margin6.top + ")");
 
-d3.select("#timeline-svg").append("circle").attr("cx",150).attr("cy",30).attr("r", 6).style("fill", "#69b3a2"); //missing perc
-d3.select("#timeline-svg").append("circle").attr("cx",150).attr("cy",60).attr("r", 6).style("fill", "orange"); //consistency
-d3.select("#timeline-svg").append("text").attr("x", 170).attr("y", 30).text("% missing value").style("font-size", "15px").attr("alignment-baseline","middle");
-d3.select("#timeline-svg").append("text").attr("x", 170).attr("y", 60).text("% consistency").style("font-size", "15px").attr("alignment-baseline","middle");       
+d3.select("#timeline-svg").append("circle").attr("cx",50).attr("cy",30).attr("r", 6).style("fill", "#69b3a2"); //missing perc
+d3.select("#timeline-svg").append("circle").attr("cx",250).attr("cy",30).attr("r", 6).style("fill", "orange"); //consistency
+d3.select("#timeline-svg").append("text").attr("x", 70).attr("y", 30).text("% missing value").style("font-size", "15px").attr("alignment-baseline","middle");
+d3.select("#timeline-svg").append("text").attr("x", 270).attr("y", 30).text("% consistency").style("font-size", "15px").attr("alignment-baseline","middle");       
           
 d3.csv("data/statistic_per_uni.csv", function(data) {
 

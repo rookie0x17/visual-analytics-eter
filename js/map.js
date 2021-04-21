@@ -83,6 +83,10 @@ svg.call(zoom);
 var div = d3.select("#map-chart").append("div")	
             .attr("class", "tooltip")				
             .style("opacity", 0);
+
+var div_timeline = d3.select("#timeline").append("div")	
+            .attr("class", "tooltip")				
+            .style("opacity", 0);
 			
 
             
@@ -422,23 +426,56 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
 var allGroup = ["missing_perc", "cons_perc"];
     
 // Reformat the data: we need an array of arrays of {x, y} tuples
-    dataReady = allGroup.map( function(grpName) { // .map allows to do something for each element of the list
+    
+    
+/*
+    dataReady = allGroup.map(function(grpName) { // .map allows to do something for each element of the list
     return {
     name: grpName,
     values: data.filter(function(d){
         if(arr_uni.length == 0){
             return false;
         } else {
-            return  arr_uni.includes(d.ETER_ID);
+            return  (d.ETER_ID == grpName);
         }
         
     }).map(function(d) {
-        return {time: d.reference_year, value: +d[grpName] * 100 };
+        return {time: d.reference_year,
+             value: +d[grpName] * 100,
+            eter_id: d.ETER_ID };
            })
+            
     };
-});   
+});
+*/
+datapre = arr_uni.map(function(datax) {
+    return {
+        eter_id: datax , 
+        roba: allGroup.map(function(grpName) { // .map allows to do something for each element of the list
+            return {
+            name: grpName,
+            values: data.filter(function(d){
+                if(arr_uni.length == 0){
+                    return false;
+                } else {
+                    return  (d.ETER_ID == datax);
+                }
+                
+            }).map(function(d) {
+                return {time: d.reference_year,
+                     value: +d[grpName] * 100,
+                    isti_name: d.institution_name };
+                   })
+                    
+            };
+        })
+    };
 
-console.log(dataReady);
+});
+  
+
+//console.log(dataReady);
+console.log(datapre);
 // A color scale: one color for each group
 var myColor = d3.scaleOrdinal()
   .domain(allGroup)
@@ -457,29 +494,44 @@ var x6 = d3.scaleLinear()
 
 
 
+
   var line = d3.line()
   .x(function(d) { return x6(+d.time) })
   .y(function(d) { return y6(+d.value) });
 svg6.selectAll("myLines")
-  .data(dataReady)
+  .data(datapre)
   .enter()
   .append("path")
-    .attr("d", function(d){ return line(d.values) } )
-    .attr("stroke", function(d){ return myColor(d.name) })
+    .attr("d", function(d){ console.log(d.roba[0].values); return line(d.roba[0].values); } )
+    .attr("stroke", function(d){ return myColor(d.roba[0].name) })
     .attr("id" , "line-uni")
-    .style("stroke-width", 3)
+    .style("stroke-width", 2)
     .style("fill", "none")
-/*
+    .on('mouseover', mouseoverLine)
+    .on('mouseout', mouseoutLine)
+
+    svg6.selectAll("myLines")
+    .data(datapre)
+    .enter()
+    .append("path")
+      .attr("d", function(d){ console.log(d.roba[1].values); return line(d.roba[1].values); } )
+      .attr("stroke", function(d){ return myColor(d.roba[1].name) })
+      .attr("id" , "line-uni")
+      .style("stroke-width", 2)
+      .style("fill", "none")
+      .on('mouseover', mouseoverLine)
+      .on('mouseout', mouseoutLine)
+
     svg6
     // First we need to enter in a group
     .selectAll("myDots")
-    .data(dataReady)
+    .data(datapre)
     .enter()
       .append('g')
-      .style("fill", function(d){ return myColor(d.name) })
+      .style("fill", function(d){ return myColor(d.roba[0].name) })
     // Second we need to enter in the 'values' part of this group
     .selectAll("myPoints")
-    .data(function(d){ return d.values })
+    .data(function(d){ return d.roba[0].values })
     .enter()
     .append("circle")
       .attr("cx", function(d) { return x6(d.time)  })
@@ -487,12 +539,52 @@ svg6.selectAll("myLines")
       .attr("r", 5)
       .attr("id" , "point-uni")
       .attr("stroke", "white")
-*/
+    
+      svg6
+      // First we need to enter in a group
+      .selectAll("myDots")
+      .data(datapre)
+      .enter()
+        .append('g')
+        .style("fill", function(d){ return myColor(d.roba[1].name) })
+      // Second we need to enter in the 'values' part of this group
+      .selectAll("myPoints")
+      .data(function(d){ return d.roba[1].values })
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x6(d.time)  })
+        .attr("cy", function(d) { return y6(d.value)  })
+        .attr("r", 5)
+        .attr("id" , "point-uni")
+        .attr("stroke", "white")
+
 
 
 });
 }
             
+function mouseoverLine(d){
+
+    
+    d3.select(this).style('stroke-width', 5).style('opacity', 0.7);
+    
+
+    div_timeline.transition()		
+            .duration(200)		
+            .style("opacity", .8);	
+        div_timeline.html(d.roba[0].values[0].isti_name)	
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 100) + "px");
+
+}
+
+function mouseoutLine(d){
+    
+    d3.select(this).style('stroke-width', 2).style('opacity', 1);
+
+    div_timeline.style("opacity" , 0);
+
+}
 
 
             
