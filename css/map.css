@@ -1,5 +1,5 @@
-.background {
-    background-color:whitesmoke;
+.background-map {
+    background-color:#cce5ff;
     pointer-events: all;
 }
    
@@ -69,7 +69,7 @@ div.tooltip {
   
   tbody {
     display: block;
-    height: 500px;
+    height: 400px;
     width: 100%;
     overflow: auto;
 }

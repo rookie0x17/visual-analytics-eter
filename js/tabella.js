@@ -3,7 +3,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
     
 
     var sortAscending = true;
-    var table = d3.select("#tabella2").append('table').attr("height" , "612").attr("weight" , "612").attr("overflow","auto");
+    var table = d3.select("#tabella2").append('table').attr("height" , "400").attr("weight" , "400").attr("overflow","auto");
     var titles_tocatch = {
         institution_name: "vuoto",
         missing_perc: 0,

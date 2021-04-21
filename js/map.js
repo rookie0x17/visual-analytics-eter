@@ -12,7 +12,7 @@ button_country_clear.onclick = function(){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     drawTimeline();
-    svg.selectAll("path").style("fill", "#99cbff");
+    svg.selectAll("path").style("fill", "#cc9966");
 };
 button_uni_clear.onclick = function(){
     arr_uni=[]
@@ -21,7 +21,7 @@ button_uni_clear.onclick = function(){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     drawTimeline();
-    svg.selectAll(".university").style('fill', 'orange').style('r','0.5px');
+    svg.selectAll(".university").style('fill', 'black').style('r','0.5px');
 };
 
 
@@ -72,7 +72,7 @@ var svg = d3.select("#map-chart")
             .append("svg")
             .attr("width", w)
             .attr("height", h)
-            .attr("class", 'background');
+            .attr("class", 'background-map');
 
 const zoom = d3.zoom()
 .scaleExtent([1, 10])
@@ -98,7 +98,7 @@ d3.json("js/europe.geojson", function(json) {
        .attr("id" , "map-path")
        .attr("d", path)
        .attr("transform", "translate(0,300)")
-       .style("fill", "#99cbff")
+       .style("fill", "#cc9966")
        .on('mouseover', mouseOverCount)
        .on('mouseout', mouseOutCount)
        .on('click', clicked);
@@ -119,7 +119,7 @@ d3.csv("data/FINALE.csv", function(rows){
         .append("circle")
             .attr("class","university")
             .attr("transform", d3.select("#map-path").attr('transform'))
-            .attr("fill" , "orange")
+            .attr("fill" , "black")
             .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
             .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
             .attr("r", "0.5px")
@@ -145,7 +145,7 @@ function zoomed() {
 function mouseOverCount(d){
     // Highlight hovered province
     if(!arr_country.includes(d.properties.ISO2)){
-        d3.select(this).style('fill', 'blue');
+        d3.select(this).style('fill', '#86592d');
     }
 
     div.transition()		
@@ -161,7 +161,7 @@ function mouseOverCount(d){
 
 function mouseOutCount(d){
     if(!arr_country.includes(d.properties.ISO2)){
-        d3.select(this).style('fill', '#99cbff');
+        d3.select(this).style('fill', '#cc9966');
     }
 }
 
@@ -198,7 +198,7 @@ function mouseoverUni(d){
 
 function mouseoutUni(d){
     if(!arr_uni.includes(d.ETER_ID)){
-        d3.select(this).style('fill', 'orange').style('r','0.5px');
+        d3.select(this).style('fill', 'black').style('r','0.5px');
     }
 }
 
@@ -284,10 +284,10 @@ function drawMap(){
             .append("circle")
                 .attr("class","university")
                 .attr("transform", d3.select("#map-path").attr('transform'))
-                .attr("fill" , "orange")
+                .attr("fill" , "black")
                 .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
                 .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
-                .attr("r", "1px")
+                .attr("r", "0.5px")
                 .on('mouseover', mouseoverUni)
                 .on('mouseout', mouseoutUni)
                 .on('click' , mouseClickUni);
@@ -429,11 +429,11 @@ var allGroup = ["missing_perc", "cons_perc"];
         if(arr_uni.length == 0){
             return false;
         } else {
-            return arr_uni.slice(-1) == d.ETER_ID ;
+            return  arr_uni.includes(d.ETER_ID);
         }
         
     }).map(function(d) {
-        return {time: d.reference_year, value: +d[grpName] * 100};
+        return {time: d.reference_year, value: +d[grpName] * 100 };
            })
     };
 });   
@@ -467,9 +467,9 @@ svg6.selectAll("myLines")
     .attr("d", function(d){ return line(d.values) } )
     .attr("stroke", function(d){ return myColor(d.name) })
     .attr("id" , "line-uni")
-    .style("stroke-width", 4)
+    .style("stroke-width", 3)
     .style("fill", "none")
-
+/*
     svg6
     // First we need to enter in a group
     .selectAll("myDots")
@@ -487,7 +487,7 @@ svg6.selectAll("myLines")
       .attr("r", 5)
       .attr("id" , "point-uni")
       .attr("stroke", "white")
-
+*/
 
 
 });
