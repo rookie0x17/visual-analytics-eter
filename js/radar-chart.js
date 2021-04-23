@@ -106,10 +106,118 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 		
 		}
-	
-	
+		
+		cont1=0;
+		contatore1=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont1 += out[i][0].value;
+				contatore1++;
+		
+		}
+		
+		media = cont1/contatore1
+		
+		cont2=0;
+		contatore2=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont2 += out[i][1].value;
+				contatore2++;
+		
+		}
+		
+		media2 = cont2/contatore2
+		
+		cont3=0;
+		contatore3=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont3 += out[i][2].value;
+				contatore3++;
+		
+		}
+		
+		media3 = cont3/contatore3
+		
+		cont4=0;
+		contatore4=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont4 += out[i][3].value;
+				contatore4++;
+		
+		}
+		
+		media4 = cont4/contatore4
+		
+		
+		cont5=0;
+		contatore5=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont5 += out[i][4].value;
+				contatore5++;
+		
+		}
+		
+		media5 = cont5/contatore5
+		
+		console.log(media);
+		console.log(media2);
+		newdata2=[]
+		// se voglio fare una media anche per i country
+		//if((data_uni.length == 0 && data_count.length == 0) || out.length>=25)
+		if(data_uni.length == 0 && data_count.length == 0){
+			
+			newdata2.push([{
+				axis: "total_current_expenditure(PPP)",
+				value: parseFloat(media )
+			},
+			{
+				axis: "total_core_budget(PPP)",
+				value: parseFloat(media2)
+			},
+			{
+				axis: "total_current_revenue",
+				value: parseFloat(media3)
+			},
+			{
+				axis: "total_third_party_funding(PPP)",
+				value: parseFloat(media4)
+			},
+			{
+				axis: "student_fees_funding(PPP)",
+				value: parseFloat(media5)
+			}
+
+
+
+			])
+
+		
+			
+			data = newdata2;
+		}
+		else{
 
 		data = out;
+		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
 		console.log(allAxis);
@@ -158,9 +266,116 @@ function RadarChart(id, data_uni, data_count, options) {
 		
 		}
 	
-	
+	cont1=0;
+		contatore1=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont1 += out[i][0].value;
+				contatore1++;
+		
+		}
+		
+		media = cont1/contatore1
+		
+		cont2=0;
+		contatore2=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont2 += out[i][1].value;
+				contatore2++;
+		
+		}
+		
+		media2 = cont2/contatore2
+		
+		cont3=0;
+		contatore3=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont3 += out[i][2].value;
+				contatore3++;
+		
+		}
+		
+		media3 = cont3/contatore3
+		
+		cont4=0;
+		contatore4=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont4 += out[i][3].value;
+				contatore4++;
+		
+		}
+		
+		media4 = cont4/contatore4
+		
+		
+		cont5=0;
+		contatore5=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont5 += out[i][4].value;
+				contatore5++;
+		
+		}
+		
+		media5 = cont5/contatore5
+		
+		console.log(media);
+		console.log(media2);
+		newdata2=[]
+		
+		if(data_uni.length == 0 && data_count.length == 0){
+			
+			newdata2.push([{
+				axis: "total_academic_staff(FTE)",
+				value: parseFloat(media) 
+			},
+			{
+				axis: "total_student_enrolled_ISCED_5-7",
+				value: parseFloat(media2)
+			},
+			{
+				axis: "total_graduated_ISCED_5-7",
+				value: parseFloat(media3)
+			},
+			{
+				axis: "total_student_enrolled_ISCED_8",
+				value: parseFloat(media4)
+			},
+			{
+				axis: "total_graduated_ISCED_8",
+				value: parseFloat(media5)
+			}
+
+
+
+			])
+
+		
+			
+			data = newdata2;
+		}
+		else{
 
 		data = out;
+		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
 		console.log(allAxis);
@@ -210,8 +425,101 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 	
 	
+cont1=0;
+		contatore1=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont1 += out[i][0].value;
+				contatore1++;
+		
+		}
+		
+		media = cont1/contatore1
+		
+		cont2=0;
+		contatore2=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont2 += out[i][1].value;
+				contatore2++;
+		
+		}
+		
+		media2 = cont2/contatore2
+		
+		cont3=0;
+		contatore3=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont3 += out[i][2].value;
+				contatore3++;
+		
+		}
+		
+		media3 = cont3/contatore3
+		
+		cont4=0;
+		contatore4=0;
+		
+		
+		
+		for (i = 0; i < out.length; i++) {
+			
+				cont4 += out[i][3].value;
+				contatore4++;
+		
+		}
+		
+		media4 = cont4/contatore4
+		
+		
+		
+		
+		console.log(media);
+		console.log(media2);
+		newdata2=[]
+		
+		if(data_uni.length == 0 && data_count.length == 0){
+			
+			newdata2.push([{
+				axis: "share_of_woman_academic_staff",
+				value: parseFloat(media)
+			},
+			{
+				axis: "share_of_women_students_ISCED_5-7",
+				value: parseFloat(media2) 
+			},
+			{
+				axis: "share_of_foreign_students_ISCED_5-7",
+				value: parseFloat(media3)
+			},
+			
+			{
+				axis: "PhD intensity",
+				value: parseFloat(media4)
+			}
+
+
+
+			])
+
+		
+			
+			data = newdata2;
+		}
+		else{
 
 		data = out;
+		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
 		console.log(allAxis);
@@ -427,12 +735,14 @@ function RadarChart(id, data_uni, data_count, options) {
 				//Dim all blobs
 				console.log(goku);
 				//console.log(pos);
+				if(goku!=undefined){
 				tip.html(goku)
 					//.style("left",pos.left  + "px")
 					//.style("top", pos.top + "px")
 					.style("opacity", 1)  
 					.style("left", (d3.event.pageX) + "px")     
-					.style("top", (d3.event.pageY - 28) + "px");					
+					.style("top", (d3.event.pageY - 28) + "px");	
+				}
       
 			//Dim all blobs
 			d3.selectAll(".radarArea")

@@ -25,13 +25,14 @@ button_uni_clear.onclick = function(){
 };
 
 
+
 var margin_radar = {
-    top: 100,
+    top: 50,
     right: 100,
     bottom: 100,
-    left: 150
+    left: 200
 },
-    width_radar = Math.min(600, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
+    width_radar = Math.min(550, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
     height_radar = Math.min(350, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
 
 var color = d3.scale.ordinal()

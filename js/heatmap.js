@@ -10,9 +10,9 @@ var myGroups3=["TOT_A_S","TOT_S","TOT_S_E_5-7","TOT_G_5-7","TOT_S_E_8","TOT_G_8"
 var myVars = ["Zero Values", "Missing Values", "% of Total Values", "Total Zero Missing Values", "% Total Zero Missing Values", "c_val", "s_val", "nc_val", "out_val"]
 
 	// set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 30, left: 90},
+var margin = {top: 10, right: 30, bottom: 30, left: 110},
   width2 = 650 - margin.left - margin.right,
-  height = 450 - margin.top - margin.bottom;
+  height = 400 - margin.top - margin.bottom;
   
  var svg2 = d3.selectAll("#heatmap")
 .append("svg")
