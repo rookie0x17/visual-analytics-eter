@@ -7,10 +7,12 @@ var myGroups2 = ["S_WOM_S_5-7", "S_WOM_A_S", "S_FOR_S_5-7", "PHD_I", "E_TOT_I_S"
 var myGroups3=["TOT_A_S","TOT_S","TOT_S_E_5-7","TOT_G_5-7","TOT_S_E_8","TOT_G_8"]
 
 
-var myVars = ["Zero Values", "Missing Values", "% of Total Values", "Total Zero Missing Values", "% Total Zero Missing Values", "c_val", "s_val", "nc_val", "out_val"]
+
+
+var myVars = ["Zero Values", "Missing Values",  "Tot_Z_M_Val", "c_val", "s_val", "nc_val", "out_val"]
 
 	// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 110},
+var margin = {top: 60, right: 30, bottom: 30, left: 80},
   width2 = 650 - margin.left - margin.right,
   height = 400 - margin.top - margin.bottom;
   
@@ -18,7 +20,18 @@ var margin = {top: 10, right: 30, bottom: 30, left: 110},
 .append("svg")
   .attr("width", width2 + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
-  .attr("class", 'background');
+  .attr("class", 'background')
+  .attr("id" , "heatmap-svg");
+
+d3.select("#heatmap-svg").append("circle").attr("cx",50).attr("cy",30).attr("r", 6).style("fill", "#9acd32"); 
+  d3.select("#heatmap-svg").append("text").attr("x", 20).attr("y", 10).text("good value").style("font-size", "15px").attr("alignment-baseline","middle");
+  d3.select("#heatmap-svg").append("circle").attr("cx",100).attr("cy",30).attr("r", 6).style("fill", "	#32cd32"); 
+   d3.select("#heatmap-svg").append("circle").attr("cx",150).attr("cy",30).attr("r", 6).style("fill", "#808000"); 
+    d3.select("#heatmap-svg").append("circle").attr("cx",200).attr("cy",30).attr("r", 6).style("fill", "#cd853f"); 
+	 d3.select("#heatmap-svg").append("circle").attr("cx",250).attr("cy",30).attr("r", 6).style("fill", "#dc143c"); 
+	 d3.select("#heatmap-svg").append("circle").attr("cx",300).attr("cy",30).attr("r", 6).style("fill", "red"); 
+	 d3.select("#heatmap-svg").append("text").attr("x", 270).attr("y", 10).text("bad value").style("font-size", "15px").attr("alignment-baseline","middle");
+	 
   
    // create a tooltip
   var tooltip = d3.select("#heatmap")
@@ -40,10 +53,12 @@ function drawHeatmap(value){
 	.remove()
 	
 	var svg2 = d3.select("#heatmap").selectAll("svg")
+		.attr("id" , "heatmap-svg")
 		.append("g")
 		.attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
-  
+		
+
 	
 
 
@@ -56,7 +71,7 @@ if (value=='Financial'){
 var x = d3.scaleBand()
   .range([ 0, width2 ])
   .domain(myGroups)
-  .padding(0.01);
+  .padding(0.04);
 svg2.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
@@ -66,14 +81,14 @@ svg2.append("g")
 var y = d3.scaleBand()
   .range([ height, 0 ])
   .domain(myVars)
-  .padding(0.01);
+  .padding(0.04);
 svg2.append("g")
   .call(d3.axisLeft(y));
 
 // Build color scale
 var myColor = d3.scaleLinear()
-  .range(["white", "#0000d2"])
-  .domain([0,1000])
+  .range(["	#9acd32", "red"])
+  .domain([0,800])
   
    // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
@@ -121,7 +136,7 @@ if (value=='Other'){
 var x = d3.scaleBand()
   .range([ 0, width2 ])
   .domain(myGroups2)
-  .padding(0.01);
+  .padding(0.02);
 svg2.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
@@ -130,14 +145,14 @@ svg2.append("g")
 var y = d3.scaleBand()
   .range([ height, 0 ])
   .domain(myVars)
-  .padding(0.01);
+  .padding(0.02);
 svg2.append("g")
   .call(d3.axisLeft(y));
 
 // Build color scale
 var myColor = d3.scaleLinear()
-  .range(["white", "#0000d2"])
-  .domain([0,1000])
+  .range(["#9acd32", "red"])
+  .domain([0,800])
 	
 
    // Three function that change the tooltip when user hover / move / leave a cell
@@ -186,7 +201,7 @@ if (value=='Educational'){
 var x = d3.scaleBand()
   .range([ 0, width2 ])
   .domain(myGroups3)
-  .padding(0.01);
+  .padding(0.02);
 svg2.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x))
@@ -195,14 +210,14 @@ svg2.append("g")
 var y = d3.scaleBand()
   .range([ height, 0 ])
   .domain(myVars)
-  .padding(0.01);
+  .padding(0.03);
 svg2.append("g")
   .call(d3.axisLeft(y));
 
 // Build color scale
 var myColor = d3.scaleLinear()
-  .range(["white", "#0000d2"])
-  .domain([0,1000])
+  .range(["#9acd32", "red"])
+  .domain([0,800])
 	
 
    // Three function that change the tooltip when user hover / move / leave a cell

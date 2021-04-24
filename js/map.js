@@ -411,7 +411,7 @@ function drawTable(){
                  .append('tr')
                  .attr("class", "row-line");
 
-    rows.selectAll('td')
+    /*rows.selectAll('td')
       .data(function (d) {
           return titles.map(function (k) {
               return { 'value': d[k], 'name': k};
@@ -431,6 +431,32 @@ function drawTable(){
           }
       })
       .style("allign" , "center");
+    }); */
+	
+	var bar = rows.selectAll("#td_missing")
+      .data(function(d) {return titles.map(function(k) {console.log(k);return {'value': d[k],'name': k}}); })
+	  .filter(function(d){
+               console.log(d.name);
+                return k == "missing_perc";
+            })
+    .enter().append("td").append("svg")
+      .attr("id", function(d,i){
+        return i;
+      })
+      .attr("width", 100)
+      .attr("height", 20)
+      
+
+  bar.append("rect")
+      .attr('id','bars')
+      .attr("height", 20)
+      .attr("width", function(d) { return d; });
+
+  bar.append("text")
+    .attr("x", 15)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+    .text(function(d){return d;});
     });
 }
 

@@ -743,6 +743,16 @@ cont1=0;
 					.style("left", (d3.event.pageX) + "px")     
 					.style("top", (d3.event.pageY - 28) + "px");	
 				}
+				else{
+					tip.html("this is the average")
+					//.style("left",pos.left  + "px")
+					//.style("top", pos.top + "px")
+					.style("opacity", 1)  
+					.style("left", (d3.event.pageX) + "px")     
+					.style("top", (d3.event.pageY - 28) + "px");	
+					
+				}
+				
       
 			//Dim all blobs
 			d3.selectAll(".radarArea")
