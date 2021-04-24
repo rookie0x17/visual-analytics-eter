@@ -12,6 +12,7 @@
     <script src="https://d3js.org/d3.v4.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    
    
 </head>
 
@@ -19,54 +20,65 @@
 
     <div class="container-fluid" >
       <div class="row">
-      <div class="col-md-4" >
-        <label style="font-size: 0.8em;"><b>Reference year:</b>
-            <select id="ref_year" class="form-control">
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-                <option value="2014">2014</option>
-                <option value="2013">2013</option>
-                <option value="2012">2012</option>
-                <option selected value="2011">2011</option>
-  
+        <div class="col-md-4" >
+          <label style="font-size: 0.8em;"><b>Reference year:</b>
+              <select id="ref_year" class="form-control">
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option selected value="2011">2011</option>
+    
+              </select>
+          </label>
+          <label style="font-size: 0.8em; padding-left: 5px;"><b>Option:</b>
+            <select id="var-select" class="form-control">
+                <option selected value="Financial">Financial</option>
+                <option value="Educational">Educational</option>
+                <option value="Other">Other</option>
+                
+
             </select>
-        </label>
-        <label style="font-size: 0.8em; padding-left: 5px;"><b>Option:</b>
-          <select id="var-select" class="form-control">
-              <option selected value="Financial">Financial</option>
-              <option value="Educational">Educational</option>
-              <option value="Other">Other</option>
-              
-
-          </select>
-        </label>
-        <button type="button" class="btn btn-secondary" id="country-clear" style="margin-left: 10px;margin-bottom: 5px;">Clear country</button>
-        <button type="button" class="btn btn-secondary" id="uni-clear"  style="margin-left: 10px;margin-bottom: 5px;">Clear university</button>
-    </div>
-
-    <div class="col-md-4" style="text-align: center; align-self: center;">
-      <h3 style="text-align: center;">Data quality on ETER database</h1>
-      </div>
-
-      <div class="col-md-4"> 
-        <div class="slidecontainer">
-          0
-          <input type="range" min="0" max="100" value="100" class="slider" id="missing_filter">
-          100
-          <input type="range" min="0" max="100" value="100" class="slider" id="">
+          </label>
+          <button type="button" class="btn btn-secondary" id="country-clear" style="margin-left: 10px;margin-bottom: 5px;">Clear country</button>
+          <button type="button" class="btn btn-secondary" id="uni-clear"  style="margin-left: 10px;margin-bottom: 5px;">Clear university</button>
         </div>
-       
-      </label>
-        
+
+        <div class="col-md-4" style="text-align: center; align-self: center;">
+           <h3 style="text-align: center;">Data quality on ETER database</h1>
+
+           
+        </div>
+
+        <div class="col-md-2">
+
+          <b style="font-size: 0.8em;margin-top: 2px;"> Missing value filter &lt;= </b> <b id="missing_value_slider" style="font-size: 0.8em;">100%</b>
+
+          <div class="slidecontainer" style="margin-top: 3px;">
+            <b style="font-size: 0.8em;">0%</b><input type="range" min="0" max="100" value="100" class="slider" id="range_missing"><b style="font-size: 0.8em;">100%</b>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+         <b style="font-size: 0.8em;margin-top: 2px;"> Consistency filter &gt;= </b><b id="cons_value_slider" style="font-size: 0.8em;">0%</b>
+          <div class="slidecontainer" style="margin-top: 3px;">
+            <b style="font-size: 0.8em;">0%</b><input type="range" min="0" max="100" value="0" class="slider" id="range_consistency"> <b style="font-size: 0.8em;">100%</b>
+          </div>
+
+          
+        </div>
+
       </div>
 
     </div>
+ 
      
         
-    </div>
+   
 
-    <hr>
+    <hr style="margin: 1px;">
 
     <div class="container-fluid">
         <div class="row">

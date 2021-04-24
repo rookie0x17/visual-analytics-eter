@@ -5,6 +5,41 @@ button_country_clear = document.getElementById("country-clear");
 button_uni_clear = document.getElementById("uni-clear");
 type= document.getElementById("var-select")
 
+//slider
+
+slider_miss = document.getElementById("range_missing");
+slider_cons = document.getElementById("range_consistency");
+
+var filter_missing=100;
+var filter_consistency=0;
+
+slider_miss.oninput = function(){
+    document.getElementById("missing_value_slider").innerHTML = this.value + "%";
+    filter_missing = this.value;
+    drawTable();
+};
+
+
+slider_cons.oninput = function(){
+    document.getElementById("cons_value_slider").innerHTML = this.value + "%";
+    filter_consistency = this.value;
+    
+};
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+};
+
+slider_miss.onstop = function(){
+    drawTable();
+};
+
+
+
 button_country_clear.onclick = function(){
     arr_country=[]
     console.log("clickato");
@@ -305,6 +340,12 @@ function drawMap(){
 }
 
 function drawTable(){
+
+    if(d3.selectAll('thead').length == undefined){
+        console.log(d3.select("thead"));
+        return;
+    }
+    
     d3.selectAll('tbody')
     .remove();
     d3.selectAll('thead')
@@ -359,9 +400,11 @@ function drawTable(){
     var rows = d3.select('table').append('tbody').selectAll('tr')
                  .data(data).enter().filter(function(d){
                     if(arr_country.length == 0 && arr_uni.length == 0){
-                        return d.reference_year == ref_year.value;
+                        return d.reference_year == ref_year.value && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency ; 
                     } else {
-                        return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value;
+                        return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value 
+                        && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency;
+                                  
                     }
                  })
                  .append('tr')
@@ -394,7 +437,7 @@ function drawTable(){
 ref_year.addEventListener('change', updateCharts);
 
 function updateCharts(e){
-    console.log(e.target.value);
+    
     drawPCA();
     drawMap();
     drawTable();
