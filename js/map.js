@@ -299,7 +299,8 @@ function drawPCA(){
           .attr("cy", function (d) { return y(d.y); } )
           .attr("r", 1.5)
           .style("fill", "#69b3a2")
-          .on('mouseover', mouseover);
+          .on('mouseover', mouseoverPCA)
+          .on('mouseout',mouseoutPCA);
 
         
         
