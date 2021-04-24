@@ -16,7 +16,7 @@ var filter_consistency=0;
 slider_miss.oninput = function(){
     document.getElementById("missing_value_slider").innerHTML = this.value + "%";
     filter_missing = this.value;
-    drawTable();
+   
 };
 
 
@@ -341,26 +341,35 @@ function drawMap(){
 }
 
 function drawTable(){
+	
+	var myColor = d3.scaleLinear()
+  .range(["limegreen", "red"])
+  .domain([0,100])
+  
+	var myColor2 = d3.scaleLinear()
+  .range(["red", "limegreen"])
+  .domain([0,100])
 
-    if(d3.selectAll('thead').length == undefined){
-        console.log(d3.select("thead"));
-        return;
-    }
     
     d3.selectAll('tbody')
     .remove();
     d3.selectAll('thead')
     .remove();
     d3.csv("data/statistic_per_uni.csv", function(error, data) {
-        var titles_tocatch = {
-            institution_name: "vuoto",
+         var titles_tocatch = {  
+			institution_name: "vuoto",
             missing_perc: 0,
             cons_perc:0,
             timeillnes_occ:0,
         };
+		
+		 var titles_tocatch2 = {
+            institution_name: "vuoto",
+        };
         
         var titles = d3.keys(titles_tocatch);
         var sortAscending = true;
+		var titles2 = d3.keys(titles_tocatch2);
 
         var headers = d3.select('table').append('thead').append('tr')
         .selectAll('th')
@@ -433,12 +442,26 @@ function drawTable(){
       .style("allign" , "center");
     }); */
 	
-	var bar = rows.selectAll("#td_missing")
-      .data(function(d) {return titles.map(function(k) {console.log(k);return {'value': d[k],'name': k}}); })
-	  .filter(function(d){
-               console.log(d.name);
-                return k == "missing_perc";
-            })
+	rows.selectAll('td')
+      .data(function (d) {
+          return titles2.map(function (k) {
+              return { 'value': d[k], 'name': k};
+          });
+      }).enter()
+      .append('td')
+      .attr('data-th', function (d) {
+          return d.name;
+      })
+      .text(function (d) {
+          return d.value;
+      })
+      .style("allign" , "center"); 
+    
+				 
+	
+
+    var bar = rows.selectAll("td")
+      .data(function(d) { return titles.map(function(k) {return { 'value': d[k], 'name': k};}); })
     .enter().append("td").append("svg")
       .attr("id", function(d,i){
         return i;
@@ -450,13 +473,41 @@ function drawTable(){
   bar.append("rect")
       .attr('id','bars')
       .attr("height", 20)
-      .attr("width", function(d) { return d; });
+	   .style("fill", function(d) { 
+	   if(d.name=="missing_perc")
+	   return myColor(d.value*100);
+		 else if(d.name=="cons_perc")
+			 return myColor2(d.value*100);
+		 else if(d.name=="timeillnes_occ")
+			 return myColor2(d.value*14);
+   } )
+      .attr("width", function(d) { 
+	  if(d.name=="missing_perc")
+	  return d.value*100;
+	  else if(d.name=="cons_perc")
+		  return d.value*100;
+	  else if(d.name=="timeillnes_occ")
+		  return d.value*14;
+	});
 
   bar.append("text")
     .attr("x", 15)
     .attr("y", 10)
     .attr("dy", ".35em")
-    .text(function(d){return d;});
+	
+    .text(function(d) { 
+	  if(d.name=="missing_perc")
+	  return d.value*100+"%";
+	  else if(d.name=="cons_perc")
+		  return d.value*100+"%";
+	  else if(d.name=="institution_name")
+		  return d.value;
+	  else if(d.name=="timeillnes_occ")
+		  return parseInt(d.value)+" of 7";
+		});
+		
+	
+	
     });
 }
 
