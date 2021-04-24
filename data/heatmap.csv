@@ -2,8 +2,8 @@
 0,ETER_ID_year,Zero Values,0.0
 1,ETER_ID_year,Missing Values,0.0
 2,ETER_ID_year,% of Total Values,0.0
-3,ETER_ID_year,Total Zero Missing Values,0.0
-4,ETER_ID_year,% Total Zero Missing Values,0.0
+3,ETER_ID_year,Tot_Z_M_Val,0.0
+4,ETER_ID_year,% Tot_Z_M_Val,0.0
 5,ETER_ID_year,c_val,0.0
 6,ETER_ID_year,s_val,0.0
 7,ETER_ID_year,nc_val,0.0
@@ -11,8 +11,8 @@
 9,ETER_ID,Zero Values,0.0
 10,ETER_ID,Missing Values,0.0
 11,ETER_ID,% of Total Values,0.0
-12,ETER_ID,Total Zero Missing Values,0.0
-13,ETER_ID,% Total Zero Missing Values,0.0
+12,ETER_ID,Tot_Z_M_Val,0.0
+13,ETER_ID,% Tot_Z_M_Val,0.0
 14,ETER_ID,c_val,0.0
 15,ETER_ID,s_val,0.0
 16,ETER_ID,nc_val,0.0
@@ -20,8 +20,8 @@
 18,institution_name,Zero Values,0.0
 19,institution_name,Missing Values,0.0
 20,institution_name,% of Total Values,0.0
-21,institution_name,Total Zero Missing Values,0.0
-22,institution_name,% Total Zero Missing Values,0.0
+21,institution_name,Tot_Z_M_Val,0.0
+22,institution_name,% Tot_Z_M_Val,0.0
 23,institution_name,c_val,0.0
 24,institution_name,s_val,0.0
 25,institution_name,nc_val,0.0
@@ -29,8 +29,8 @@
 27,english_institution_name,Zero Values,0.0
 28,english_institution_name,Missing Values,1912.0
 29,english_institution_name,% of Total Values,10.831633809200088
-30,english_institution_name,Total Zero Missing Values,1912.0
-31,english_institution_name,% Total Zero Missing Values,10.831633809200088
+30,english_institution_name,Tot_Z_M_Val,1912.0
+31,english_institution_name,% Tot_Z_M_Val,10.831633809200088
 32,english_institution_name,c_val,0.0
 33,english_institution_name,s_val,0.0
 34,english_institution_name,nc_val,0.0
@@ -38,8 +38,8 @@
 36,reference_year,Zero Values,0.0
 37,reference_year,Missing Values,0.0
 38,reference_year,% of Total Values,0.0
-39,reference_year,Total Zero Missing Values,0.0
-40,reference_year,% Total Zero Missing Values,0.0
+39,reference_year,Tot_Z_M_Val,0.0
+40,reference_year,% Tot_Z_M_Val,0.0
 41,reference_year,c_val,0.0
 42,reference_year,s_val,0.0
 43,reference_year,nc_val,0.0
@@ -47,8 +47,8 @@
 45,country_code,Zero Values,0.0
 46,country_code,Missing Values,0.0
 47,country_code,% of Total Values,0.0
-48,country_code,Total Zero Missing Values,0.0
-49,country_code,% Total Zero Missing Values,0.0
+48,country_code,Tot_Z_M_Val,0.0
+49,country_code,% Tot_Z_M_Val,0.0
 50,country_code,c_val,0.0
 51,country_code,s_val,0.0
 52,country_code,nc_val,0.0
@@ -56,8 +56,8 @@
 54,name_of_the_city,Zero Values,0.0
 55,name_of_the_city,Missing Values,29.0
 56,name_of_the_city,% of Total Values,0.1642873328801269
-57,name_of_the_city,Total Zero Missing Values,29.0
-58,name_of_the_city,% Total Zero Missing Values,0.1642873328801269
+57,name_of_the_city,Tot_Z_M_Val,29.0
+58,name_of_the_city,% Tot_Z_M_Val,0.1642873328801269
 59,name_of_the_city,c_val,0.0
 60,name_of_the_city,s_val,0.0
 61,name_of_the_city,nc_val,0.0
@@ -65,8 +65,8 @@
 63,latitude,Zero Values,0.0
 64,latitude,Missing Values,29.0
 65,latitude,% of Total Values,0.1642873328801269
-66,latitude,Total Zero Missing Values,29.0
-67,latitude,% Total Zero Missing Values,0.1642873328801269
+66,latitude,Tot_Z_M_Val,29.0
+67,latitude,% Tot_Z_M_Val,0.1642873328801269
 68,latitude,c_val,0.0
 69,latitude,s_val,0.0
 70,latitude,nc_val,0.0
@@ -74,8 +74,8 @@
 72,longitude,Zero Values,0.0
 73,longitude,Missing Values,29.0
 74,longitude,% of Total Values,0.1642873328801269
-75,longitude,Total Zero Missing Values,29.0
-76,longitude,% Total Zero Missing Values,0.1642873328801269
+75,longitude,Tot_Z_M_Val,29.0
+76,longitude,% Tot_Z_M_Val,0.1642873328801269
 77,longitude,c_val,0.0
 78,longitude,s_val,0.0
 79,longitude,nc_val,0.0
@@ -83,8 +83,8 @@
 81,P_E,Zero Values,0.0
 82,P_E,Missing Values,9785.0
 83,P_E,% of Total Values,55.432812145932466
-84,P_E,Total Zero Missing Values,9785.0
-85,P_E,% Total Zero Missing Values,55.432812145932466
+84,P_E,Tot_Z_M_Val,9785.0
+85,P_E,% Tot_Z_M_Val,55.432812145932466
 86,P_E,c_val,215.0
 87,P_E,s_val,0.0
 88,P_E,nc_val,0.0
@@ -92,8 +92,8 @@
 90,N-P_E,Zero Values,4.0
 91,N-P_E,Missing Values,9785.0
 92,N-P_E,% of Total Values,55.432812145932466
-93,N-P_E,Total Zero Missing Values,9789.0
-94,N-P_E,% Total Zero Missing Values,55.455472467709036
+93,N-P_E,Tot_Z_M_Val,9789.0
+94,N-P_E,% Tot_Z_M_Val,55.455472467709036
 95,N-P_E,c_val,215.0
 96,N-P_E,s_val,0.0
 97,N-P_E,nc_val,0.0
@@ -101,8 +101,8 @@
 99,EXP_UN,Zero Values,5306.0
 100,EXP_UN,Missing Values,9755.0
 101,EXP_UN,% of Total Values,55.26285973260821
-102,EXP_UN,Total Zero Missing Values,15061.0
-103,EXP_UN,% Total Zero Missing Values,85.32177656922728
+102,EXP_UN,Tot_Z_M_Val,15061.0
+103,EXP_UN,% Tot_Z_M_Val,85.32177656922728
 104,EXP_UN,c_val,215.0
 105,EXP_UN,s_val,0.0
 106,EXP_UN,nc_val,0.0
@@ -110,8 +110,8 @@
 108,TOT_C_E,Zero Values,0.0
 109,TOT_C_E,Missing Values,9782.0
 110,TOT_C_E,% of Total Values,55.415816904600035
-111,TOT_C_E,Total Zero Missing Values,9782.0
-112,TOT_C_E,% Total Zero Missing Values,55.415816904600035
+111,TOT_C_E,Tot_Z_M_Val,9782.0
+112,TOT_C_E,% Tot_Z_M_Val,55.415816904600035
 113,TOT_C_E,c_val,215.0
 114,TOT_C_E,s_val,0.0
 115,TOT_C_E,nc_val,0.0
@@ -119,8 +119,8 @@
 117,CAP_E,Zero Values,203.0
 118,CAP_E,Missing Values,10496.0
 119,CAP_E,% of Total Values,59.460684341717645
-120,CAP_E,Total Zero Missing Values,10699.0
-121,CAP_E,% Total Zero Missing Values,60.61069567187854
+120,CAP_E,Tot_Z_M_Val,10699.0
+121,CAP_E,% Tot_Z_M_Val,60.61069567187854
 122,CAP_E,c_val,215.0
 123,CAP_E,s_val,0.0
 124,CAP_E,nc_val,0.0
@@ -128,8 +128,8 @@
 126,TOT_C_B,Zero Values,681.0
 127,TOT_C_B,Missing Values,9793.0
 128,TOT_C_B,% of Total Values,55.478132789485606
-129,TOT_C_B,Total Zero Missing Values,10474.0
-130,TOT_C_B,% Total Zero Missing Values,59.33605257194654
+129,TOT_C_B,Tot_Z_M_Val,10474.0
+130,TOT_C_B,% Tot_Z_M_Val,59.33605257194654
 131,TOT_C_B,c_val,215.0
 132,TOT_C_B,s_val,0.0
 133,TOT_C_B,nc_val,0.0
@@ -137,8 +137,8 @@
 135,TOT_T_P_F,Zero Values,653.0
 136,TOT_T_P_F,Missing Values,10009.0
 137,TOT_T_P_F,% of Total Values,56.70179016542035
-138,TOT_T_P_F,Total Zero Missing Values,10662.0
-139,TOT_T_P_F,% Total Zero Missing Values,60.40108769544528
+138,TOT_T_P_F,Tot_Z_M_Val,10662.0
+139,TOT_T_P_F,% Tot_Z_M_Val,60.40108769544528
 140,TOT_T_P_F,c_val,215.0
 141,TOT_T_P_F,s_val,0.0
 142,TOT_T_P_F,nc_val,0.0
@@ -146,8 +146,8 @@
 144,STU_F_F,Zero Values,332.0
 145,STU_F_F,Missing Values,9777.0
 146,STU_F_F,% of Total Values,55.38749150237933
-147,STU_F_F,Total Zero Missing Values,10109.0
-148,STU_F_F,% Total Zero Missing Values,57.268298209834576
+147,STU_F_F,Tot_Z_M_Val,10109.0
+148,STU_F_F,% Tot_Z_M_Val,57.268298209834576
 149,STU_F_F,c_val,215.0
 150,STU_F_F,s_val,0.0
 151,STU_F_F,nc_val,0.0
@@ -155,8 +155,8 @@
 153,REV_UN,Zero Values,1372.0
 154,REV_UN,Missing Values,9976.0
 155,REV_UN,% of Total Values,56.51484251076364
-156,REV_UN,Total Zero Missing Values,11348.0
-157,REV_UN,% Total Zero Missing Values,64.2873328801269
+156,REV_UN,Tot_Z_M_Val,11348.0
+157,REV_UN,% Tot_Z_M_Val,64.2873328801269
 158,REV_UN,c_val,215.0
 159,REV_UN,s_val,0.0
 160,REV_UN,nc_val,0.0
@@ -164,8 +164,8 @@
 162,TOT_C_REV,Zero Values,4.0
 163,TOT_C_REV,Missing Values,9921.0
 164,TOT_C_REV,% of Total Values,56.203263086335824
-165,TOT_C_REV,Total Zero Missing Values,9925.0
-166,TOT_C_REV,% Total Zero Missing Values,56.22592340811239
+165,TOT_C_REV,Tot_Z_M_Val,9925.0
+166,TOT_C_REV,% Tot_Z_M_Val,56.22592340811239
 167,TOT_C_REV,c_val,215.0
 168,TOT_C_REV,s_val,0.0
 169,TOT_C_REV,nc_val,0.0
@@ -173,8 +173,8 @@
 171,TOT_A_S,Zero Values,8.0
 172,TOT_A_S,Missing Values,7820.0
 173,TOT_A_S,% of Total Values,44.30092907319285
-174,TOT_A_S,Total Zero Missing Values,7828.0
-175,TOT_A_S,% Total Zero Missing Values,44.34624971674598
+174,TOT_A_S,Tot_Z_M_Val,7828.0
+175,TOT_A_S,% Tot_Z_M_Val,44.34624971674598
 176,TOT_A_S,c_val,74.0
 177,TOT_A_S,s_val,28.0
 178,TOT_A_S,nc_val,0.0
@@ -182,8 +182,8 @@
 180,TOT_S,Zero Values,8.0
 181,TOT_S,Missing Values,8234.0
 182,TOT_S,% of Total Values,46.646272377067746
-183,TOT_S,Total Zero Missing Values,8242.0
-184,TOT_S,% Total Zero Missing Values,46.69159302062089
+183,TOT_S,Tot_Z_M_Val,8242.0
+184,TOT_S,% Tot_Z_M_Val,46.69159302062089
 185,TOT_S,c_val,73.0
 186,TOT_S,s_val,1.0
 187,TOT_S,nc_val,0.0
@@ -191,8 +191,8 @@
 189,LOW_D_D,Zero Values,4290.0
 190,LOW_D_D,Missing Values,2491.0
 191,LOW_D_D,% of Total Values,14.111715386358487
-192,LOW_D_D,Total Zero Missing Values,6781.0
-193,LOW_D_D,% Total Zero Missing Values,38.414910491728975
+192,LOW_D_D,Tot_Z_M_Val,6781.0
+193,LOW_D_D,% Tot_Z_M_Val,38.414910491728975
 194,LOW_D_D,c_val,52.0
 195,LOW_D_D,s_val,0.0
 196,LOW_D_D,nc_val,0.0
@@ -200,8 +200,8 @@
 198,HIGH_D_D,Zero Values,129.0
 199,HIGH_D_D,Missing Values,2494.0
 200,HIGH_D_D,% of Total Values,14.12871062769091
-201,HIGH_D_D,Total Zero Missing Values,2623.0
-202,HIGH_D_D,% Total Zero Missing Values,14.85950600498527
+201,HIGH_D_D,Tot_Z_M_Val,2623.0
+202,HIGH_D_D,% Tot_Z_M_Val,14.85950600498527
 203,HIGH_D_D,c_val,52.0
 204,HIGH_D_D,s_val,0.0
 205,HIGH_D_D,nc_val,0.0
@@ -209,8 +209,8 @@
 207,TOT_S_E_5,Zero Values,619.0
 208,TOT_S_E_5,Missing Values,2295.0
 209,TOT_S_E_5,% of Total Values,13.001359619306596
-210,TOT_S_E_5,Total Zero Missing Values,2914.0
-211,TOT_S_E_5,% Total Zero Missing Values,16.50804441423068
+210,TOT_S_E_5,Tot_Z_M_Val,2914.0
+211,TOT_S_E_5,% Tot_Z_M_Val,16.50804441423068
 212,TOT_S_E_5,c_val,55.0
 213,TOT_S_E_5,s_val,19.0
 214,TOT_S_E_5,nc_val,0.0
@@ -218,8 +218,8 @@
 216,TOT_S_E_6,Zero Values,294.0
 217,TOT_S_E_6,Missing Values,2501.0
 218,TOT_S_E_6,% of Total Values,14.168366190799912
-219,TOT_S_E_6,Total Zero Missing Values,2795.0
-220,TOT_S_E_6,% Total Zero Missing Values,15.833899841377747
+219,TOT_S_E_6,Tot_Z_M_Val,2795.0
+220,TOT_S_E_6,% Tot_Z_M_Val,15.833899841377747
 221,TOT_S_E_6,c_val,55.0
 222,TOT_S_E_6,s_val,23.0
 223,TOT_S_E_6,nc_val,0.0
@@ -227,8 +227,8 @@
 225,TOT_S_E_7,Zero Values,824.0
 226,TOT_S_E_7,Missing Values,2671.0
 227,TOT_S_E_7,% of Total Values,15.1314298663041
-228,TOT_S_E_7,Total Zero Missing Values,3495.0
-229,TOT_S_E_7,% Total Zero Missing Values,19.79945615227736
+228,TOT_S_E_7,Tot_Z_M_Val,3495.0
+229,TOT_S_E_7,% Tot_Z_M_Val,19.79945615227736
 230,TOT_S_E_7,c_val,55.0
 231,TOT_S_E_7,s_val,49.0
 232,TOT_S_E_7,nc_val,0.0
@@ -236,8 +236,8 @@
 234,TOT_S_E_7_L,Zero Values,3877.0
 235,TOT_S_E_7_L,Missing Values,2621.0
 236,TOT_S_E_7_L,% of Total Values,14.848175844096986
-237,TOT_S_E_7_L,Total Zero Missing Values,6498.0
-238,TOT_S_E_7_L,% Total Zero Missing Values,36.81169272603671
+237,TOT_S_E_7_L,Tot_Z_M_Val,6498.0
+238,TOT_S_E_7_L,% Tot_Z_M_Val,36.81169272603671
 239,TOT_S_E_7_L,c_val,55.0
 240,TOT_S_E_7_L,s_val,102.0
 241,TOT_S_E_7_L,nc_val,0.0
@@ -245,8 +245,8 @@
 243,TOT_S_E_5-7,Zero Values,31.0
 244,TOT_S_E_5-7,Missing Values,2985.0
 245,TOT_S_E_5-7,% of Total Values,16.910265125764784
-246,TOT_S_E_5-7,Total Zero Missing Values,3016.0
-247,TOT_S_E_5-7,% Total Zero Missing Values,17.085882619533198
+246,TOT_S_E_5-7,Tot_Z_M_Val,3016.0
+247,TOT_S_E_5-7,% Tot_Z_M_Val,17.085882619533198
 248,TOT_S_E_5-7,c_val,55.0
 249,TOT_S_E_5-7,s_val,4.0
 250,TOT_S_E_5-7,nc_val,0.0
@@ -254,8 +254,8 @@
 252,TOT_G_5,Zero Values,882.0
 253,TOT_G_5,Missing Values,2530.0
 254,TOT_G_5,% of Total Values,14.332653523680037
-255,TOT_G_5,Total Zero Missing Values,3412.0
-256,TOT_G_5,% Total Zero Missing Values,19.329254475413553
+255,TOT_G_5,Tot_Z_M_Val,3412.0
+256,TOT_G_5,% Tot_Z_M_Val,19.329254475413553
 257,TOT_G_5,c_val,69.0
 258,TOT_G_5,s_val,85.0
 259,TOT_G_5,nc_val,0.0
@@ -263,8 +263,8 @@
 261,TOT_G_6,Zero Values,518.0
 262,TOT_G_6,Missing Values,3111.0
 263,TOT_G_6,% of Total Values,17.624065261726717
-264,TOT_G_6,Total Zero Missing Values,3629.0
-265,TOT_G_6,% Total Zero Missing Values,20.55857693179243
+264,TOT_G_6,Tot_Z_M_Val,3629.0
+265,TOT_G_6,% Tot_Z_M_Val,20.55857693179243
 266,TOT_G_6,c_val,69.0
 267,TOT_G_6,s_val,81.0
 268,TOT_G_6,nc_val,0.0
@@ -272,8 +272,8 @@
 270,TOT_G_7,Zero Values,1166.0
 271,TOT_G_7,Missing Values,3359.0
 272,TOT_G_7,% of Total Values,19.029005211874008
-273,TOT_G_7,Total Zero Missing Values,4525.0
-274,TOT_G_7,% Total Zero Missing Values,25.634489009743934
+273,TOT_G_7,Tot_Z_M_Val,4525.0
+274,TOT_G_7,% Tot_Z_M_Val,25.634489009743934
 275,TOT_G_7,c_val,69.0
 276,TOT_G_7,s_val,162.0
 277,TOT_G_7,nc_val,0.0
@@ -281,8 +281,8 @@
 279,TOT_G_7_L,Zero Values,4721.0
 280,TOT_G_7_L,Missing Values,3231.0
 281,TOT_G_7_L,% of Total Values,18.303874915023798
-282,TOT_G_7_L,Total Zero Missing Values,7952.0
-283,TOT_G_7_L,% Total Zero Missing Values,45.04871969181962
+282,TOT_G_7_L,Tot_Z_M_Val,7952.0
+283,TOT_G_7_L,% Tot_Z_M_Val,45.04871969181962
 284,TOT_G_7_L,c_val,67.0
 285,TOT_G_7_L,s_val,143.0
 286,TOT_G_7_L,nc_val,0.0
@@ -290,8 +290,8 @@
 288,TOT_G_5-7,Zero Values,121.0
 289,TOT_G_5-7,Missing Values,3716.0
 290,TOT_G_5-7,% of Total Values,21.051438930432813
-291,TOT_G_5-7,Total Zero Missing Values,3837.0
-292,TOT_G_5-7,% Total Zero Missing Values,21.736913664174036
+291,TOT_G_5-7,Tot_Z_M_Val,3837.0
+292,TOT_G_5-7,% Tot_Z_M_Val,21.736913664174036
 293,TOT_G_5-7,c_val,69.0
 294,TOT_G_5-7,s_val,30.0
 295,TOT_G_5-7,nc_val,0.0
@@ -299,8 +299,8 @@
 297,TOT_S_E_8,Zero Values,251.0
 298,TOT_S_E_8,Missing Values,2936.0
 299,TOT_S_E_8,% of Total Values,16.632676184001813
-300,TOT_S_E_8,Total Zero Missing Values,3187.0
-301,TOT_S_E_8,% Total Zero Missing Values,18.05461137548153
+300,TOT_S_E_8,Tot_Z_M_Val,3187.0
+301,TOT_S_E_8,% Tot_Z_M_Val,18.05461137548153
 302,TOT_S_E_8,c_val,55.0
 303,TOT_S_E_8,s_val,102.0
 304,TOT_S_E_8,nc_val,0.0
@@ -308,8 +308,8 @@
 306,TOT_G_8,Zero Values,875.0
 307,TOT_G_8,Missing Values,3652.0
 308,TOT_G_8,% of Total Values,20.688873782007704
-309,TOT_G_8,Total Zero Missing Values,4527.0
-310,TOT_G_8,% Total Zero Missing Values,25.64581917063223
+309,TOT_G_8,Tot_Z_M_Val,4527.0
+310,TOT_G_8,% Tot_Z_M_Val,25.64581917063223
 311,TOT_G_8,c_val,69.0
 312,TOT_G_8,s_val,436.0
 313,TOT_G_8,nc_val,0.0
@@ -317,8 +317,8 @@
 315,S_WOM_S_5-7,Zero Values,11.0
 316,S_WOM_S_5-7,Missing Values,3329.0
 317,S_WOM_S_5-7,% of Total Values,18.859052798549737
-318,S_WOM_S_5-7,Total Zero Missing Values,3340.0
-319,S_WOM_S_5-7,% Total Zero Missing Values,18.921368683435304
+318,S_WOM_S_5-7,Tot_Z_M_Val,3340.0
+319,S_WOM_S_5-7,% Tot_Z_M_Val,18.921368683435304
 320,S_WOM_S_5-7,c_val,55.0
 321,S_WOM_S_5-7,s_val,676.0
 322,S_WOM_S_5-7,nc_val,0.0
@@ -326,8 +326,8 @@
 324,S_WOM_A_S,Zero Values,12.0
 325,S_WOM_A_S,Missing Values,7086.0
 326,S_WOM_A_S,% of Total Values,40.142760027192395
-327,S_WOM_A_S,Total Zero Missing Values,7098.0
-328,S_WOM_A_S,% Total Zero Missing Values,40.21074099252209
+327,S_WOM_A_S,Tot_Z_M_Val,7098.0
+328,S_WOM_A_S,% Tot_Z_M_Val,40.21074099252209
 329,S_WOM_A_S,c_val,74.0
 330,S_WOM_A_S,s_val,263.0
 331,S_WOM_A_S,nc_val,0.0
@@ -335,8 +335,8 @@
 333,S_FOR_S_5-7,Zero Values,641.0
 334,S_FOR_S_5-7,Missing Values,4332.0
 335,S_FOR_S_5-7,% of Total Values,24.541128484024476
-336,S_FOR_S_5-7,Total Zero Missing Values,4973.0
-337,S_FOR_S_5-7,% Total Zero Missing Values,28.17244504871969
+336,S_FOR_S_5-7,Tot_Z_M_Val,4973.0
+337,S_FOR_S_5-7,% Tot_Z_M_Val,28.17244504871969
 338,S_FOR_S_5-7,c_val,62.0
 339,S_FOR_S_5-7,s_val,2384.0
 340,S_FOR_S_5-7,nc_val,0.0
@@ -344,8 +344,8 @@
 342,PHD_I,Zero Values,818.0
 343,PHD_I,Missing Values,3685.0
 344,PHD_I,% of Total Values,20.8758214366644
-345,PHD_I,Total Zero Missing Values,4503.0
-346,PHD_I,% Total Zero Missing Values,25.50985723997281
+345,PHD_I,Tot_Z_M_Val,4503.0
+346,PHD_I,% Tot_Z_M_Val,25.50985723997281
 347,PHD_I,c_val,69.0
 348,PHD_I,s_val,465.0
 349,PHD_I,nc_val,0.0
@@ -353,8 +353,8 @@
 351,E_TOT_I_S,Zero Values,2195.0
 352,E_TOT_I_S,Missing Values,475.0
 353,E_TOT_I_S,% of Total Values,2.6909132109675955
-354,E_TOT_I_S,Total Zero Missing Values,2670.0
-355,E_TOT_I_S,% Total Zero Missing Values,15.125764785859962
+354,E_TOT_I_S,Tot_Z_M_Val,2670.0
+355,E_TOT_I_S,% Tot_Z_M_Val,15.125764785859962
 356,E_TOT_I_S,c_val,0.0
 357,E_TOT_I_S,s_val,0.0
 358,E_TOT_I_S,nc_val,0.0
@@ -362,8 +362,8 @@
 360,E_TOT_O_S,Zero Values,1747.0
 361,E_TOT_O_S,Missing Values,475.0
 362,E_TOT_O_S,% of Total Values,2.6909132109675955
-363,E_TOT_O_S,Total Zero Missing Values,2222.0
-364,E_TOT_O_S,% Total Zero Missing Values,12.587808746884205
+363,E_TOT_O_S,Tot_Z_M_Val,2222.0
+364,E_TOT_O_S,% Tot_Z_M_Val,12.587808746884205
 365,E_TOT_O_S,c_val,0.0
 366,E_TOT_O_S,s_val,0.0
 367,E_TOT_O_S,nc_val,0.0
