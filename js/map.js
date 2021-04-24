@@ -10,12 +10,19 @@ type= document.getElementById("var-select")
 slider_miss = document.getElementById("range_missing");
 slider_cons = document.getElementById("range_consistency");
 
+apply_filter_btn = document.getElementById("filter");
+
+
+
 var filter_missing=100;
 var filter_consistency=0;
 
 slider_miss.oninput = function(){
     document.getElementById("missing_value_slider").innerHTML = this.value + "%";
     filter_missing = this.value;
+    
+    drawPCA();
+    drawTable();
    
 };
 
@@ -23,6 +30,9 @@ slider_miss.oninput = function(){
 slider_cons.oninput = function(){
     document.getElementById("cons_value_slider").innerHTML = this.value + "%";
     filter_consistency = this.value;
+
+    drawPCA();
+    drawTable();
     
 };
 
@@ -341,6 +351,10 @@ function drawMap(){
 }
 
 function drawTable(){
+
+    if(document.getElementById("marcatore")== null){
+        return;
+    }
 	
 	var myColor = d3.scaleLinear()
   .range(["limegreen", "red"])
@@ -371,7 +385,7 @@ function drawTable(){
         var sortAscending = true;
 		var titles2 = d3.keys(titles_tocatch2);
 
-        var headers = d3.select('table').append('thead').append('tr')
+        var headers = d3.select('table').append('thead').attr("id" , "marcatore").append('tr')
         .selectAll('th')
         .data(["Institution name" , "Missing value" , "Consistency" , "Timeilness"]).enter()
         .append('th')

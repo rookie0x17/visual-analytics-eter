@@ -26,7 +26,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
         var titles = d3.keys(titles_tocatch);
         var sortAscending = true;
 		var titles2 = d3.keys(titles_tocatch2);
-    var headers = table.append('thead').append('tr')
+    var headers = table.append('thead').attr("id" , "marcatore").append('tr')
                      .selectAll('th')
                      .data(["Institution name" , "Missing value" , "Consistency" , "Timeilness"]).enter()
                      .append('th')
