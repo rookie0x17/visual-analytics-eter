@@ -23,6 +23,7 @@ slider_miss.oninput = function(){
     
     drawPCA();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
    
 };
 
@@ -33,6 +34,7 @@ slider_cons.oninput = function(){
 
     drawPCA();
     drawTable();
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     
 };
 
