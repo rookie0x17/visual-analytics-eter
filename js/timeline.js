@@ -18,7 +18,7 @@ d3.select("#timeline-svg").append("circle").attr("cx",250).attr("cy",30).attr("r
 d3.select("#timeline-svg").append("text").attr("x", 70).attr("y", 30).text("% missing value").style("font-size", "15px").attr("alignment-baseline","middle");
 d3.select("#timeline-svg").append("text").attr("x", 270).attr("y", 30).text("% consistency").style("font-size", "15px").attr("alignment-baseline","middle");       
           
-d3.csv("data/statistic_per_uni.csv", function(data) {
+d3.csv("data/stastic_per_entiredb.csv", function(data) {
 
     // List of groups (here I have one group per column)
     var allGroup = ["missing_perc", "cons_perc"];
@@ -28,11 +28,7 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
         return {
         name: grpName,
         values: data.filter(function(d){
-            if(arr_country.length == 0){
-                return d.ETER_ID == "FR0003";
-            } else {
-                return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value;
-            }
+           return true;
             
         }).map(function(d) {
             return {time: d.reference_year, value: +d[grpName] * 100};
@@ -62,7 +58,7 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
     svg6.append("g")
       .call(d3.axisLeft(y6));
 
-    /*
+    
       var line = d3.line()
       .x(function(d) { return x6(+d.time) })
       .y(function(d) { return y6(+d.value) });
@@ -72,9 +68,11 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
       .append("path")
         .attr("d", function(d){ return line(d.values) } )
         .attr("stroke", function(d){ return myColor(d.name) })
-        .attr("id" , "line-uni")
+        .attr("id" , "line-entire-db-timeline")
         .style("stroke-width", 4)
         .style("fill", "none")
+        .on('mouseover', mouseoverLineEntiredb)
+        .on('mouseout', mouseoutLineEntiredb)
 
         svg6
         // First we need to enter in a group
@@ -91,9 +89,33 @@ d3.csv("data/statistic_per_uni.csv", function(data) {
           .attr("cx", function(d) { return x6(d.time)  })
           .attr("cy", function(d) { return y6(d.value)  })
           .attr("r", 5)
-          .attr("id" , "point-uni")
-          .attr("stroke", "white")*/
+          .attr("id" , "point-entiredb-timeline")
+          .attr("stroke", "white")
 
    
     
 });
+
+function mouseoverLineEntiredb(d){
+
+    
+  d3.select(this).style('stroke-width', 8).style('opacity', 0.7);
+  
+
+  div_timeline.transition()		
+          .duration(200)		
+          .style("opacity", .8);	
+      div_timeline.html("All")	
+          .style("left", (d3.event.pageX) + "px")		
+          .style("top", (d3.event.pageY - 100) + "px");
+
+}
+
+function mouseoutLineEntiredb(d){
+  
+  d3.select(this).style('stroke-width', 4).style('opacity', 1);
+
+  div_timeline.style("opacity" , 0);
+
+}
+

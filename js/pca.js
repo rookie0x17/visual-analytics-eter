@@ -51,6 +51,7 @@ var div = d3.select("#pca-chart").append("div")
       .attr("cx", function (d) { return x(d.x); } )
       .attr("cy", function (d) { return y(d.y); } )
       .attr("r", 1.5)
+      .attr("id" , "pca-circle")
       .style("fill", "#69b3a2")
       .on('mouseover', mouseoverPCA)
       .on('mouseout',mouseoutPCA);

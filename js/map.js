@@ -218,16 +218,31 @@ function mouseOutCount(d){
 }
 
 function clicked(d){
-    if(!arr_country.includes(d.properties.ISO2)){
+    if(!arr_country.includes(d.properties.ISO2) && !arr_country.includes("UK")  ){
+        if(d.properties.ISO2 == "GB"){
+            arr_country.push("UK");
+        } else {
         arr_country.push(d.properties.ISO2);
+        }
+    } else if (arr_country.includes("UK")) {
+
+        
+            index = arr_country.indexOf("UK");
+            if (index > -1) {
+                arr_country.splice(index, 1);
+            }
     } else {
         index = arr_country.indexOf(d.properties.ISO2);
         if (index > -1) {
             arr_country.splice(index, 1);
         }
     }
+
+
+    console.log(arr_country);
     drawPCA();
     drawTable();
+    drawTimeline();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
 }
 
@@ -258,6 +273,7 @@ function mouseClickUni(d){
 
     if(!arr_uni.includes(d.ETER_ID)){
         arr_uni.push(d.ETER_ID);
+        //arr_country.push(d.country_code);
     } else {
         index = arr_uni.indexOf(d.ETER_ID);
         if (index > -1) {
@@ -276,7 +292,7 @@ function mouseClickUni(d){
 function drawPCA(){
 
     var g = d3.selectAll('g')
-    g.selectAll("circle")
+    g.selectAll("#pca-circle")
     .remove();
 
     
@@ -310,6 +326,7 @@ function drawPCA(){
           .attr("cx", function (d) {return x(d.x); } )
           .attr("cy", function (d) { return y(d.y); } )
           .attr("r", 1.5)
+          .attr("id" , "pca-circle")
           .style("fill", "#69b3a2")
           .on('mouseover', mouseoverPCA)
           .on('mouseout',mouseoutPCA);
@@ -699,8 +716,169 @@ svg6.selectAll("myLines")
 
 
 });
+
+
+d3.csv("data/stastic_per_country.csv", function(data) {
+
+    d3.selectAll("#line-country-timeline").remove();
+    d3.selectAll("#point-country-timeline").remove();
+    var dataReady = undefined ;
+
+// List of groups (here I have one group per column)
+var allGroup = ["missing_perc", "cons_perc"];
+    
+// Reformat the data: we need an array of arrays of {x, y} tuples
+    
+    
+/*
+    dataReady = allGroup.map(function(grpName) { // .map allows to do something for each element of the list
+    return {
+    name: grpName,
+    values: data.filter(function(d){
+        if(arr_uni.length == 0){
+            return false;
+        } else {
+            return  (d.ETER_ID == grpName);
+        }
+        
+    }).map(function(d) {
+        return {time: d.reference_year,
+             value: +d[grpName] * 100,
+            eter_id: d.ETER_ID };
+           })
+            
+    };
+});
+*/
+datapre = arr_country.map(function(datax) {
+    return {
+        country_code: datax , 
+        roba: allGroup.map(function(grpName) { // .map allows to do something for each element of the list
+            return {
+            name: grpName,
+            values: data.filter(function(d){
+                if(arr_country.length == 0){
+                    return false;
+                } else {
+                    return  (d.country_code == datax);
+                }
+                
+            }).map(function(d) {
+                return {time: d.reference_year,
+                     value: +d[grpName] * 100
+                     };
+                   })
+                    
+            };
+        })
+    };
+
+});
+  
+
+//console.log(dataReady);
+console.log("arrivo");
+console.log(datapre);
+// A color scale: one color for each group
+var myColor = d3.scaleOrdinal()
+  .domain(allGroup)
+  .range(d3.schemeSet2);
+
+var years = [2011,2017];
+// Add X axis --> it is a date format
+var x6 = d3.scaleLinear()
+  .domain(years)
+  .range([ 0, 500 ]);
+
+
+  var y6 = d3.scaleLinear()
+  .domain( [0,100])
+  .range([ height6, 0 ]);
+
+
+
+
+  var line = d3.line()
+  .x(function(d) { return x6(+d.time) })
+  .y(function(d) { return y6(+d.value) });
+svg6.selectAll("myLines")
+  .data(datapre)
+  .enter()
+  .append("path")
+    .attr("d", function(d){ console.log(d.roba[0].values); return line(d.roba[0].values); } )
+    .attr("stroke", function(d){ return myColor(d.roba[0].name) })
+    .attr("id" , "line-country-timeline")
+    .style("stroke-width", 2)
+    .style("fill", "none")
+    .on('mouseover', mouseoverLineCountry)
+    .on('mouseout', mouseoutLineCountry)
+
+    svg6.selectAll("myLines")
+    .data(datapre)
+    .enter()
+    .append("path")
+      .attr("d", function(d){ console.log(d.roba[1].values); return line(d.roba[1].values); } )
+      .attr("stroke", function(d){ return myColor(d.roba[1].name) })
+      .attr("id" , "line-country-timeline")
+      .style("stroke-width", 2)
+      .style("fill", "none")
+      .on('mouseover', mouseoverLineCountry)
+    .on('mouseout', mouseoutLineCountry)
+      
+
+    svg6
+    // First we need to enter in a group
+    .selectAll("myDots")
+    .data(datapre)
+    .enter()
+      .append('g')
+      .style("fill", function(d){ return myColor(d.roba[0].name) })
+    // Second we need to enter in the 'values' part of this group
+    .selectAll("myPoints")
+    .data(function(d){ return d.roba[0].values })
+    .enter()
+    .append("circle")
+      .attr("cx", function(d) { return x6(d.time)  })
+      .attr("cy", function(d) { return y6(d.value)  })
+      .attr("r", 5)
+      .attr("id" , "point-country-timeline")
+      .attr("stroke", "white")
+    
+      svg6
+      // First we need to enter in a group
+      .selectAll("myDots")
+      .data(datapre)
+      .enter()
+        .append('g')
+        .style("fill", function(d){ return myColor(d.roba[1].name) })
+      // Second we need to enter in the 'values' part of this group
+      .selectAll("myPoints")
+      .data(function(d){ return d.roba[1].values })
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x6(d.time)  })
+        .attr("cy", function(d) { return y6(d.value)  })
+        .attr("r", 5)
+        .attr("id" , "point-country-timeline")
+        .attr("stroke", "white")
+
+
+
+});
+
+
+
+
 }
             
+
+
+
+
+
+
+
+
 function mouseoverLine(d){
 
     
@@ -717,6 +895,29 @@ function mouseoverLine(d){
 }
 
 function mouseoutLine(d){
+    
+    d3.select(this).style('stroke-width', 2).style('opacity', 1);
+
+    div_timeline.style("opacity" , 0);
+
+}
+
+function mouseoverLineCountry(d){
+
+    
+    d3.select(this).style('stroke-width', 5).style('opacity', 0.7);
+    
+
+    div_timeline.transition()		
+            .duration(200)		
+            .style("opacity", .8);	
+        div_timeline.html(d.country_code)	
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 100) + "px");
+
+}
+
+function mouseoutLineCountry(d){
     
     d3.select(this).style('stroke-width', 2).style('opacity', 1);
 

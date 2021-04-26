@@ -62,6 +62,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
                          
                      });
     
+              
 
 
     var rows = table.append('tbody').selectAll('tr')
