@@ -204,6 +204,8 @@ function RadarChart(id, data_uni, data_count, options) {
 		
 		
 		
+		
+		
 		//------------------------------------------------------------------------------------------------------------
 		
 		for (i = 0; i < total.length; i++) {	
@@ -552,8 +554,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		console.log(out);
 		console.log(media2);
 		newdata2=[]
+		/*
+		if(isNaN(media))
+			media=0;
+		if(isNaN(media2))
+			media2=0;
+		if(isNaN(media3))
+			media3=0;
+		if(isNaN(media4))
+			media4=0;
+		if(isNaN(media5))
+			media5=0;
+		*/
+		
+		console.log(media2);
+		
 		// se voglio fare una media anche per i country
-		if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
+		if((data_uni.length == 0 && data_count.length == 0) || out.length>=25 ){
 		//if(data_uni.length == 0 && data_count.length == 0){
 			
 			
@@ -660,8 +677,37 @@ function RadarChart(id, data_uni, data_count, options) {
 			data = newdata2;
 		}
 		else{
+			console.log(out);
+		if(out.length==0){
+			out.push([{
+				axis: "total_current_expenditure(PPP)",
+				value: 0
+			},
+			{
+				axis: "total_core_budget(PPP)",
+				value: 0
+			},
+			{
+				axis: "total_current_revenue",
+				value: 0
+			},
+			{
+				axis: "total_third_party_funding(PPP)",
+				value: 0
+			},
+			{
+				axis: "student_fees_funding(PPP)",
+				value: 0
+			}
 
+
+
+			])
+			data=out;
+		}
+		else{
 		data = out;
+		}
 		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
@@ -895,8 +941,37 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 
 		else{
+			console.log(out);
+		if(out.length==0){
+			out.push([{
+				axis: "total_academic_staff(FTE)",
+				value: 0
+			},
+			{
+				axis: "total_student_enrolled_ISCED_5-7",
+				value: 0
+			},
+			{
+				axis: "total_graduated_ISCED_5-7",
+				value: 0
+			},
+			{
+				axis: "total_student_enrolled_ISCED_8",
+				value: 0
+			},
+			{
+				axis: "total_graduated_ISCED_8",
+				value: 0
+			}
 
+
+
+			])
+			data=out;
+		}
+		else{
 		data = out;
+		}
 		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
@@ -1128,8 +1203,31 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			data = newdata2;
 		}
 		else{
+			console.log(out);
+		if(out.length==0){
+			out.push([{
+				axis: "share_of_woman_academic_staff",
+				value: 0
+			},
+			{
+				axis: "share_of_women_students_ISCED_5-7",
+				value: 0
+			},
+			{
+				axis: "share_of_foreign_students_ISCED_5-7",
+				value: 0
+			},
+			{
+				axis: "PhD intensity",
+				value: 0
+			}
 
+			])
+			data=out;
+		}
+		else{
 		data = out;
+		}
 		}
 		console.log(data);
 		var allAxis = (data[0].map(function(i, j){return i.axis}))
