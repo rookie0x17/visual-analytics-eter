@@ -1305,7 +1305,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 				});
 				var goku;
 				for (ix = 0; ix < output.length; ix++) {
-					console.log(vegeta[1][1])
+					//console.log(vegeta[1][1])
 					//console.log(output[ix][15])
 					if (type.value=='Educational'){
 					
@@ -1317,7 +1317,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 				}
 				
 				if ( vegeta[1][1] == parseFloat(mediatot22)) {
-						console.log("ok");
+						//console.log("ok");
 						goku = "The total average";
 					
 				}
