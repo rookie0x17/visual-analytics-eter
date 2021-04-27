@@ -388,7 +388,7 @@ function drawTable(){
     .remove();
     d3.selectAll('thead')
     .remove();
-    d3.csv("data/statistic_per_uni.csv", function(error, data) {
+    d3.csv("data/fusion_db.csv", function(error, data) {
          var titles_tocatch = {  
 			institution_name: "vuoto",
             missing_perc: 0,
@@ -445,7 +445,7 @@ function drawTable(){
                     if(arr_country.length == 0 && arr_uni.length == 0){
                         return d.reference_year == ref_year.value && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency ; 
                     } else {
-                        return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value 
+                        return (arr_uni.includes(d.ETER_ID) || arr_country.includes(d.institution_name)) && d.reference_year == ref_year.value 
                         && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency;
                                   
                     }
@@ -542,6 +542,16 @@ function drawTable(){
 	
 	
     });
+
+
+    
+
+
+
+
+
+
+
 }
 
 
