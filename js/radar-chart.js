@@ -469,6 +469,31 @@ function RadarChart(id, data_uni, data_count, options) {
 
 		}
 		
+		out.push([{
+				axis: "total_current_expenditure(PPP)",
+				value: parseFloat(mediatot )
+			},
+			{
+				axis: "total_core_budget(PPP)",
+				value: parseFloat(mediatot2)
+			},
+			{
+				axis: "total_current_revenue",
+				value: parseFloat(mediatot3)
+			},
+			{
+				axis: "total_third_party_funding(PPP)",
+				value: parseFloat(mediatot4)
+			},
+			{
+				axis: "student_fees_funding(PPP)",
+				value: parseFloat(mediatot5)
+			}
+
+
+
+			])
+		
 		for (i = 0; i < out.length; i++) {
 			for (j = 0; j < 5; j++) {
 				if(isNaN(out[i][j].value))
@@ -748,6 +773,31 @@ function RadarChart(id, data_uni, data_count, options) {
 
 		}
 		
+		out.push([{
+				axis: "total_academic_staff(FTE)",
+				value: parseFloat(mediatot21 )
+			},
+			{
+				axis: "total_student_enrolled_ISCED_5-7",
+				value: parseFloat(mediatot22)
+			},
+			{
+				axis: "total_graduated_ISCED_5-7",
+				value: parseFloat(mediatot32)
+			},
+			{
+				axis: "total_student_enrolled_ISCED_8",
+				value: parseFloat(mediatot42)
+			},
+			{
+				axis: "total_graduated_ISCED_8",
+				value: parseFloat(mediatot52)
+			}
+
+
+
+			])
+		
 		for (i = 0; i < out.length; i++) {
 			for (j = 0; j < 5; j++) {
 				if(isNaN(out[i][j].value))
@@ -1009,7 +1059,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			])
 
 		}
-		
+		out.push([{
+				axis: "share_of_woman_academic_staff",
+				value: parseFloat(mediatot31)
+			},
+			{
+				axis: "share_of_women_students_ISCED_5-7",
+				value: parseFloat(mediatot23)
+			},
+			{
+				axis: "share_of_foreign_students_ISCED_5-7",
+				value: parseFloat(mediatot33)
+			},
+			{
+				axis: "PhD intensity",
+				value: parseFloat(mediatot43)
+			}
+		])
 		
 		
 		for (i = 0; i < out.length; i++) {
@@ -1085,29 +1151,7 @@ cont1=0;
 		console.log(media2);
 		newdata2=[]
 
-			
-			newdata2.push([{
-				axis: "share_of_woman_academic_staff",
-				value: parseFloat(media)
-			},
-			{
-				axis: "share_of_women_students_ISCED_5-7",
-				value: parseFloat(media2) 
-			},
-			{
-				axis: "share_of_foreign_students_ISCED_5-7",
-				value: parseFloat(media3)
-			},
-			
-			{
-				axis: "PhD intensity",
-				value: parseFloat(media4)
-			}
-
-
-
-			])
-
+		
 if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 		//if(data_uni.length == 0 && data_count.length == 0){
 			
@@ -1226,6 +1270,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			data=out;
 		}
 		else{
+			
 		data = out;
 		}
 		}
