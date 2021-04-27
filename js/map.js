@@ -328,6 +328,7 @@ function drawPCA(){
           .attr("r", 1.5)
           .attr("id" , "pca-circle")
           .style("fill", "#69b3a2")
+          .attr("class" , function(d){return d.country_code;})
           .on('mouseover', mouseoverPCA)
           .on('mouseout',mouseoutPCA);
 
@@ -530,9 +531,9 @@ function drawTable(){
 	
     .text(function(d) { 
 	  if(d.name=="missing_perc")
-	  return d.value*100+"%";
+	  return Math.trunc(d.value*100)+"%";
 	  else if(d.name=="cons_perc")
-		  return d.value*100+"%";
+		  return Math.trunc(d.value*100)+"%";
 	  else if(d.name=="institution_name")
 		  return d.value;
 	  else if(d.name=="timeillnes_occ")

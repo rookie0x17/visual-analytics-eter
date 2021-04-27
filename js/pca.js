@@ -51,6 +51,7 @@ var div = d3.select("#pca-chart").append("div")
       .attr("cx", function (d) { return x(d.x); } )
       .attr("cy", function (d) { return y(d.y); } )
       .attr("r", 1.5)
+      .attr("class" , function(d){return d.country_code;})
       .attr("id" , "pca-circle")
       .style("fill", "#69b3a2")
       .on('mouseover', mouseoverPCA)
@@ -63,8 +64,9 @@ var div = d3.select("#pca-chart").append("div")
 function mouseoverPCA(d){
   // Highlight hovered province
 
-  d3.select(this).style('fill', 'blue');
+  d3.select(this).style('fill', 'blue').attr("r" , 3);
   
+  d3.selectAll("."+this.className.baseVal).style("fill" , "blue").attr("r" , 3);
 
   div.transition()		
       .duration(200)		
@@ -78,7 +80,9 @@ function mouseoverPCA(d){
 function mouseoutPCA(d){
   // Highlight hovered province
 
-  d3.select(this).style('fill', '#69b3a2');
+  d3.select(this).style('fill', '#69b3a2').attr("r" , 1.5);
+
+  d3.selectAll("." + this.className.baseVal).style("fill" , "#69b3a2").attr("r" , 1.5);
   
 
   	
