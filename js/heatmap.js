@@ -24,20 +24,20 @@ var margin = {top: 60, right: 30, bottom: 30, left: 80},
   .attr("id" , "heatmap-svg");
 
 //d3.select("#heatmap-svg").append("circle").attr("cx",50).attr("cy",30).attr("r", 6).style("fill", "#9acd32"); 
-  d3.select("#heatmap-svg").append("text").attr("x", 20).attr("y", 10).text("good value").style("font-size", "15px").attr("alignment-baseline","middle");
+  d3.select("#heatmap-svg").append("text").attr("x", 150).attr("y", 10).text("good value").style("font-size", "15px").attr("alignment-baseline","middle");
   //d3.select("#heatmap-svg").append("circle").attr("cx",100).attr("cy",30).attr("r", 6).style("fill", "	#32cd32"); 
    //d3.select("#heatmap-svg").append("circle").attr("cx",150).attr("cy",30).attr("r", 6).style("fill", "#808000"); 
     //d3.select("#heatmap-svg").append("circle").attr("cx",200).attr("cy",30).attr("r", 6).style("fill", "#cd853f"); 
 	 //d3.select("#heatmap-svg").append("circle").attr("cx",250).attr("cy",30).attr("r", 6).style("fill", "#dc143c"); 
 	 //d3.select("#heatmap-svg").append("circle").attr("cx",300).attr("cy",30).attr("r", 6).style("fill", "red"); 
-	 d3.select("#heatmap-svg").append("text").attr("x", 270).attr("y", 10).text("bad value").style("font-size", "15px").attr("alignment-baseline","middle");
+	 d3.select("#heatmap-svg").append("text").attr("x", 450).attr("y", 10).text("bad value").style("font-size", "15px").attr("alignment-baseline","middle");
 	 
-	 d3.select("#heatmap-svg").append("rect").attr("x",20).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#9acd32"); 
-	 d3.select("#heatmap-svg").append("rect").attr("x",70).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#32cd32"); 
-	 d3.select("#heatmap-svg").append("rect").attr("x",120).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#808000"); 
-	 d3.select("#heatmap-svg").append("rect").attr("x",170).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#cd853f"); 
-	 d3.select("#heatmap-svg").append("rect").attr("x",220).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#dc143c"); 
-	 d3.select("#heatmap-svg").append("rect").attr("x",270).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "red"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",180).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#9acd32"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",230).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#32cd32"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",280).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#808000"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",330).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#cd853f"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",380).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "#dc143c"); 
+	 d3.select("#heatmap-svg").append("rect").attr("x",430).attr("y",20).attr("width", 50).attr("height", 20).style("fill", "red"); 
 	
 	 
   
@@ -103,8 +103,10 @@ var myColor = d3.scaleLinear()
     tooltip
       .style("opacity", 1)
     d3.select(this)
-      .style("stroke", "black")
-      .style("opacity", 1)
+      .style("stroke", "black" )
+	  .attr("stroke-width", 2.5)
+      .style("opacity", .5)
+
   }
   var mousemove = function(d) {
     tooltip
@@ -168,8 +170,9 @@ var myColor = d3.scaleLinear()
     tooltip
       .style("opacity", 1)
     d3.select(this)
-      .style("stroke", "black")
-      .style("opacity", 1)
+      .style("stroke", "black" )
+	  .attr("stroke-width", 2.5)
+      .style("opacity", .5)
   }
   var mousemove = function(d) {
     tooltip
@@ -233,8 +236,9 @@ var myColor = d3.scaleLinear()
     tooltip
       .style("opacity", 1)
     d3.select(this)
-      .style("stroke", "black")
-      .style("opacity", 1)
+      .style("stroke", "black" )
+	  .attr("stroke-width", 2.5)
+      .style("opacity", .5)
   }
   var mousemove = function(d) {
     tooltip

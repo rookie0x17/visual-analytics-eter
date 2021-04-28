@@ -90,23 +90,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 	for (i = 0; i < total.length; i++) {	
 	mtot.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(tot[i][12] )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: parseFloat(tot[i][14])
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(tot[i][18])
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: parseFloat(tot[i][15])
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: parseFloat(tot[i][16])
 			}
 
@@ -210,23 +210,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		
 		for (i = 0; i < total.length; i++) {	
 	mtot2.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff(FTE)",
 				value: parseFloat(tot[i][19]) 
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(tot[i][27])
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(tot[i][32])
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED_8",
 				value: parseFloat(tot[i][33])
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: parseFloat(tot[i][34])
 			}
 
@@ -328,15 +328,15 @@ function RadarChart(id, data_uni, data_count, options) {
 		
 				for (i = 0; i < total.length; i++) {	
 	mtot3.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(tot[i][36])
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(tot[i][35]) 
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(tot[i][37])
 			},
 			
@@ -440,11 +440,11 @@ function RadarChart(id, data_uni, data_count, options) {
 		for (i = 0; i < newdata.length; i++) {
 			
 			out.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(output[i][12] )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: parseFloat(output[i][14])
 			},
 			{
@@ -452,11 +452,11 @@ function RadarChart(id, data_uni, data_count, options) {
 				value: parseFloat(output[i][18])
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total_third_party_funding",
 				value: parseFloat(output[i][15])
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student_fees_funding",
 				value: parseFloat(output[i][16])
 			}
 
@@ -470,23 +470,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 		
 		out.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(mediatot )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget)",
 				value: parseFloat(mediatot2)
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(mediatot3)
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: parseFloat(mediatot4)
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: parseFloat(mediatot5)
 			}
 
@@ -602,23 +602,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			
 			
 			newdata2.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(mediatot )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: parseFloat(mediatot2)
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(mediatot3)
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: parseFloat(mediatot4)
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: parseFloat(mediatot5)
 			}
 
@@ -627,23 +627,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			])
 			
 			newdata2.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(media )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: parseFloat(media2)
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(media3)
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: parseFloat(media4)
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: parseFloat(media5)
 			}
 
@@ -657,23 +657,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			if(output[i][1]==data_uni[j]){
 				console.log("ok");
 			newdata2.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: parseFloat(output[i][12] )
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: parseFloat(output[i][14])
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(output[i][18])
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: parseFloat(output[i][15])
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: parseFloat(output[i][16])
 			}
 
@@ -705,23 +705,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			console.log(out);
 		if(out.length==0){
 			out.push([{
-				axis: "total_current_expenditure(PPP)",
+				axis: "total current expenditure",
 				value: 0
 			},
 			{
-				axis: "total_core_budget(PPP)",
+				axis: "total core budget",
 				value: 0
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: 0
 			},
 			{
-				axis: "total_third_party_funding(PPP)",
+				axis: "total third party funding",
 				value: 0
 			},
 			{
-				axis: "student_fees_funding(PPP)",
+				axis: "student fees funding",
 				value: 0
 			}
 
@@ -747,23 +747,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		for (i = 0; i < newdata.length; i++) {
 			
 			out.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: parseFloat(output[i][19]) 
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(output[i][27])
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(output[i][32])
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: parseFloat(output[i][33])
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: parseFloat(output[i][34])
 			}
 
@@ -774,23 +774,23 @@ function RadarChart(id, data_uni, data_count, options) {
 		}
 		
 		out.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: parseFloat(mediatot21 )
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(mediatot22)
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(mediatot32)
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: parseFloat(mediatot42)
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated_ISCED 8",
 				value: parseFloat(mediatot52)
 			}
 
@@ -890,23 +890,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			
 			
 			newdata2.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: parseFloat(mediatot21 )
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(mediatot22)
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(mediatot32)
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: parseFloat(mediatot42)
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: parseFloat(mediatot52)
 			}
 
@@ -915,23 +915,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			])
 			
 			newdata2.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: parseFloat(media )
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(media2)
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(media3)
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: parseFloat(media4)
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: parseFloat(media5)
 			}
 
@@ -945,23 +945,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			if(output[i][1]==data_uni[j]){
 				console.log("ok");
 			newdata2.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: parseFloat(output[i][19]) 
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: parseFloat(output[i][27])
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: parseFloat(output[i][32])
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: parseFloat(output[i][33])
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: parseFloat(output[i][34])
 			}
 
@@ -994,23 +994,23 @@ function RadarChart(id, data_uni, data_count, options) {
 			console.log(out);
 		if(out.length==0){
 			out.push([{
-				axis: "total_academic_staff(FTE)",
+				axis: "total academic staff",
 				value: 0
 			},
 			{
-				axis: "total_student_enrolled_ISCED_5-7",
+				axis: "total student enrolled ISCED 5-7",
 				value: 0
 			},
 			{
-				axis: "total_graduated_ISCED_5-7",
+				axis: "total graduated ISCED 5-7",
 				value: 0
 			},
 			{
-				axis: "total_student_enrolled_ISCED_8",
+				axis: "total student enrolled ISCED 8",
 				value: 0
 			},
 			{
-				axis: "total_graduated_ISCED_8",
+				axis: "total graduated ISCED 8",
 				value: 0
 			}
 
@@ -1036,15 +1036,15 @@ function RadarChart(id, data_uni, data_count, options) {
 		for (i = 0; i < newdata.length; i++) {
 			
 			out.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(output[i][36])
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(output[i][35]) 
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(output[i][37])
 			},
 			
@@ -1060,15 +1060,15 @@ function RadarChart(id, data_uni, data_count, options) {
 
 		}
 		out.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(mediatot31)
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(mediatot23)
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(mediatot33)
 			},
 			{
@@ -1159,15 +1159,15 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			
 			
 			newdata2.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(mediatot31)
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(mediatot23)
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(mediatot33)
 			},
 			{
@@ -1180,15 +1180,15 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			])
 			
 			newdata2.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(media)
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(media2) 
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(media3)
 			},
 			
@@ -1207,15 +1207,15 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			if(output[i][1]==data_uni[j]){
 				console.log("ok");
 			newdata2.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: parseFloat(output[i][36])
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students ISCED 5-7",
 				value: parseFloat(output[i][35])
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: parseFloat(output[i][37])
 			},
 			{
@@ -1250,15 +1250,15 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			console.log(out);
 		if(out.length==0){
 			out.push([{
-				axis: "share_of_woman_academic_staff",
+				axis: "share of woman academic staff",
 				value: 0
 			},
 			{
-				axis: "share_of_women_students_ISCED_5-7",
+				axis: "share of women students_ISCED 5-7",
 				value: 0
 			},
 			{
-				axis: "share_of_foreign_students_ISCED_5-7",
+				axis: "share of foreign students ISCED 5-7",
 				value: 0
 			},
 			{
@@ -1375,7 +1375,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 	   .attr("class", "axisLabel")
 	   .attr("x", 4)
 	   .attr("y", function(d){return -d*radius/cfg.levels;})
-	   .attr("dy", "0.4em")
+	   .attr("dy", "0.99em")
 	   .style("font-size", "10px")
 	   .attr("fill", "#737373")
 	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
@@ -1404,6 +1404,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 	axis.append("text")
 		.attr("class", "legend")
 		.style("font-size", "11px")
+		.style("font-weight", "bold")
 		.attr("text-anchor", "middle")
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
