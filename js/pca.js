@@ -99,7 +99,7 @@ function mouseoutPCA(d){
 
   d3.selectAll("." + this.className.baseVal).style("fill" , "#69b3a2").attr("r" , 1.5);
   
-
+  div.style("opacity" , "0");
   	
 
 }

@@ -215,6 +215,8 @@ function mouseOutCount(d){
     if(!arr_country.includes(d.properties.ISO2)){
         d3.select(this).style('fill', '#cc9966');
     }
+
+    div.style("opacity" , "0");
 }
 
 function clicked(d){
@@ -267,6 +269,7 @@ function mouseoutUni(d){
     if(!arr_uni.includes(d.ETER_ID)){
         d3.select(this).style('fill', '#735244').style('r','0.5px');
     }
+    div.style("opacity" , "0");
 }
 
 function mouseClickUni(d){
