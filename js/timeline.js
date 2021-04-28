@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin6 = {top: 70, right: 10, bottom: 30, left: 30},
+var margin6 = {top: 70, right: 10, bottom: 50, left: 70},
     width6 = 600 - margin6.left - margin6.right,
     height6 = 400 - margin6.top - margin6.bottom;
 
@@ -52,11 +52,29 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
       .attr("transform", "translate(0," + height6 + ")")
       .call(d3.axisBottom(x6).ticks(7));
 
+      svg6.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top - 40) + ")")
+      .style("text-anchor", "middle").style("fill" , "black")
+      .text("Years");
+
+
+
       var y6 = d3.scaleLinear()
       .domain( [0,100])
       .range([ height6, 0 ]);
     svg6.append("g")
       .call(d3.axisLeft(y6));
+
+
+      svg6.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 20)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Percentage");
 
     
       var line = d3.line()

@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 70, right: 10, bottom: 10, left: 80},
+var margin = {top: 70, right: 10, bottom: 10, left: 100},
     width = 600 - margin.left - margin.right,
     height = 460 - margin.top - margin.bottom;
 
@@ -30,6 +30,13 @@ var div = d3.select("#pca-chart").append("div")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
+    svg1.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top -10) + ")")
+      .style("text-anchor", "middle").style("fill" , "black")
+      .text("X1");
+
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([-600e+2, 300e+3])
@@ -37,6 +44,14 @@ var div = d3.select("#pca-chart").append("div")
   svg1.append("g")
     .attr("id" , "y")
     .call(d3.axisLeft(y));
+
+    svg1.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left )
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("X2");
 
   // Add dots
   svg1.append('g')
