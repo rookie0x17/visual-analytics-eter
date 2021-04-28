@@ -68,7 +68,7 @@ button_uni_clear.onclick = function(){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     drawTimeline();
-    svg.selectAll(".university").style('fill', 'black').style('r','0.5px');
+    svg.selectAll(".university").style('fill', '#735244').style('r','0.5px');
 };
 
 
