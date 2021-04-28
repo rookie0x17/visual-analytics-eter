@@ -358,7 +358,7 @@ function drawMap(){
             .append("circle")
                 .attr("class","university")
                 .attr("transform", d3.select("#map-path").attr('transform'))
-                .attr("fill" , "black")
+                .attr("fill" , "#735244")
                 .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
                 .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
                 .attr("r", "0.5px")
