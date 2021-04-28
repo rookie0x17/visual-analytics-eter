@@ -150,7 +150,7 @@ d3.json("js/europe.geojson", function(json) {
        .attr("id" , "map-path")
        .attr("d", path)
        .attr("transform", "translate(0,300)")
-       .style("fill", "#cc9966")
+       .style("fill", "#cc9966")   //#C29682 cc9966
        .on('mouseover', mouseOverCount)
        .on('mouseout', mouseOutCount)
        .on('click', clicked);
@@ -171,7 +171,7 @@ d3.csv("data/FINALE.csv", function(rows){
         .append("circle")
             .attr("class","university")
             .attr("transform", d3.select("#map-path").attr('transform'))
-            .attr("fill" , "black")
+            .attr("fill" , "#735244") //#735244
             .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
             .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
             .attr("r", "0.5px")
@@ -265,7 +265,7 @@ function mouseoverUni(d){
 
 function mouseoutUni(d){
     if(!arr_uni.includes(d.ETER_ID)){
-        d3.select(this).style('fill', 'black').style('r','0.5px');
+        d3.select(this).style('fill', '#735244').style('r','0.5px');
     }
 }
 
@@ -522,7 +522,7 @@ function drawTable(){
 		  return d.value*100;
 	  else if(d.name=="timeillnes_occ")
 		  return d.value*14;
-	});
+	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");;
 
   bar.append("text")
     .attr("x", 15)
@@ -892,6 +892,10 @@ svg6.selectAll("myLines")
 
 function mouseoverLine(d){
 
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-uni").style("opacity" , 0.5);
+
     
     d3.select(this).style('stroke-width', 5).style('opacity', 0.7);
     
@@ -906,6 +910,10 @@ function mouseoverLine(d){
 }
 
 function mouseoutLine(d){
+
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+  d3.selectAll("#line-country-timeline").style("opacity" , 1);
+  d3.selectAll("#line-uni").style("opacity" , 1);
     
     d3.select(this).style('stroke-width', 2).style('opacity', 1);
 
@@ -914,6 +922,10 @@ function mouseoutLine(d){
 }
 
 function mouseoverLineCountry(d){
+
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-uni").style("opacity" , 0.5);
 
     
     d3.select(this).style('stroke-width', 5).style('opacity', 0.7);
@@ -930,6 +942,11 @@ function mouseoverLineCountry(d){
 
 function mouseoutLineCountry(d){
     
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+    d3.selectAll("#line-country-timeline").style("opacity" , 1);
+    d3.selectAll("#line-uni").style("opacity" , 1);
+
+
     d3.select(this).style('stroke-width', 2).style('opacity', 1);
 
     div_timeline.style("opacity" , 0);

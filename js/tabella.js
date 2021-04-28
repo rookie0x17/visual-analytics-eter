@@ -53,7 +53,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
                            rows.sort(function(a, b) { return b[cerca] < a[cerca]; });
                            sortAscending = false;
                            this.className = 'aes';
-                           console.log("qui");
+                          
                          } else {
                            rows.sort(function(a, b) { return b[cerca] > a[cerca]; });
                            sortAscending = true;
@@ -121,13 +121,13 @@ rows.selectAll('td')
 		  return d.value*100;
 	  else if(d.name=="timeillnes_occ")
 		  return d.value*14;
-	});
+	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");
 
   bar.append("text")
     .attr("x", 15)
     .attr("y", 10)
     .attr("dy", ".35em")
-	
+    .style("fill" , "black")
     .text(function(d) { 
 	  if(d.name=="missing_perc")
 	  return d.value*100+"%";
@@ -142,5 +142,4 @@ rows.selectAll('td')
 	
 	
     });
-
 

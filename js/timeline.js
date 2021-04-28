@@ -98,6 +98,9 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
 
 function mouseoverLineEntiredb(d){
 
+  d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-uni").style("opacity" , 0.5);
     
   d3.select(this).style('stroke-width', 8).style('opacity', 0.7);
   
@@ -113,6 +116,11 @@ function mouseoverLineEntiredb(d){
 
 function mouseoutLineEntiredb(d){
   
+  d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+  d3.selectAll("#line-country-timeline").style("opacity" , 1);
+  d3.selectAll("#line-uni").style("opacity" , 1);
+
+
   d3.select(this).style('stroke-width', 4).style('opacity', 1);
 
   div_timeline.style("opacity" , 0);
