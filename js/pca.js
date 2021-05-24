@@ -83,6 +83,11 @@ function mouseoverPCA(d){
   
   d3.selectAll("."+this.className.baseVal).style("fill" , "blue").attr("r" , 3);
 
+  if(!arr_country.includes(this.className.baseVal)){
+  d3.select("."+this.className.baseVal+"country").style("fill" , "#01665e");
+  }
+  
+
   div.transition()		
       .duration(200)		
       .style("opacity", .8);	
@@ -98,7 +103,10 @@ function mouseoutPCA(d){
   d3.select(this).style('fill', '#69b3a2').attr("r" , 1.5);
 
   d3.selectAll("." + this.className.baseVal).style("fill" , "#69b3a2").attr("r" , 1.5);
-  
+
+  if(!arr_country.includes(this.className.baseVal)){
+  d3.select("."+this.className.baseVal+"country").style("fill" , "#d8b365");
+  }
   div.style("opacity" , "0");
   	
 

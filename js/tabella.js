@@ -20,7 +20,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
         };
 		
 		 var titles_tocatch2 = {
-            institution_name: "vuoto",
+              ETER_ID: "vuoto",
         };
         
         var titles = d3.keys(titles_tocatch);
@@ -36,7 +36,7 @@ d3.csv("data/statistic_per_uni.csv", function(error, data) {
                      .on('click', function (d) {
                        var cerca = "";
                       if(d == "Institution name"){
-                        cerca = "institution_name" ;
+                        cerca = "ETER_ID" ;
                       } else if (d == "Missing value") {
                         cerca = "missing_perc";
                       } else if (d == "Consistency"){
@@ -99,13 +99,13 @@ rows.selectAll('td')
       .attr("id", function(d,i){
         return i;
       })
-      .attr("width", 100)
+      .attr("width", "100%")
       .attr("height", 20)
       
 
   bar.append("rect")
       .attr('id','bars')
-      .attr("height", 20)
+      .attr("height", "100%")
 	   .style("fill", function(d) { 
 	   if(d.name=="missing_perc")
 	   return myColor(d.value*100);

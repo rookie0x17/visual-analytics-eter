@@ -1,12 +1,13 @@
 .background-map {
-    background-color:#cce5ff;
+    background-color:#c8e8fa;
     pointer-events: all;
 }
    
 #map-path {
 fill: #fff;
 stroke: white;
-line-height: 5px;
+stroke-width: 1.5px;
+line-height: 10px;
 opacity: 50%;
 }
    
@@ -60,9 +61,9 @@ div.tooltip {
       background-position: 3% center;
   }
   td, th { 
-      padding: 6px; 
-      border: 1px solid #ccc; 
-      text-align: left; 
+     /* padding: 6px; 
+      border: 1px solid #ccc; */
+      text-align: center; 
   }
   
   

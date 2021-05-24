@@ -59,7 +59,7 @@ button_country_clear.onclick = function(){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     drawTimeline();
-    svg.selectAll("path").style("fill", "#cc9966");
+    svg.selectAll("path").style("fill", "#d8b365");
 };
 button_uni_clear.onclick = function(){
     arr_uni=[]
@@ -68,7 +68,7 @@ button_uni_clear.onclick = function(){
     drawTable();
 	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
     drawTimeline();
-    svg.selectAll(".university").style('fill', '#735244').style('r','0.5px');
+    svg.selectAll(".university").style('fill', 'black').style('r','1px');
 };
 
 
@@ -150,7 +150,8 @@ d3.json("js/europe.geojson", function(json) {
        .attr("id" , "map-path")
        .attr("d", path)
        .attr("transform", "translate(0,300)")
-       .style("fill", "#cc9966")   //#C29682 cc9966
+       .attr("class" , function(d) {if(d.properties.ISO2 == "GB") return "UKcountry"; else return d.properties.ISO2+"country"})
+       .style("fill", "#d8b365")   //#C29682 cc9966
        .on('mouseover', mouseOverCount)
        .on('mouseout', mouseOutCount)
        .on('click', clicked);
@@ -171,10 +172,10 @@ d3.csv("data/FINALE.csv", function(rows){
         .append("circle")
             .attr("class","university")
             .attr("transform", d3.select("#map-path").attr('transform'))
-            .attr("fill" , "#735244") //#735244
+            .attr("fill" , "#black") //#735244
             .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
             .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
-            .attr("r", "0.5px")
+            .attr("r", "1px")
             .on('mouseover', mouseoverUni)
             .on('mouseout', mouseoutUni)
             .on('click' , mouseClickUni);
@@ -196,8 +197,17 @@ function zoomed() {
 
 function mouseOverCount(d){
     // Highlight hovered province
-    if(!arr_country.includes(d.properties.ISO2)){
-        d3.select(this).style('fill', '#86592d');
+    var to_prove = d.properties.ISO2;
+    
+    if(to_prove=="GB"){
+        to_prove = "UK";
+    }
+
+
+
+    if(!arr_country.includes(to_prove ) ){
+        d3.select(this).style('fill', '#01665e');
+        console.log(to_prove);
     }
 
     div.transition()		
@@ -212,8 +222,17 @@ function mouseOverCount(d){
 }
 
 function mouseOutCount(d){
-    if(!arr_country.includes(d.properties.ISO2)){
-        d3.select(this).style('fill', '#cc9966');
+
+    var to_prove = d.properties.ISO2;
+
+    if(to_prove=="GB"){
+        to_prove = "UK";
+    }
+
+
+    if(!arr_country.includes(to_prove )){
+        d3.select(this).style('fill', '#d8b365');
+        
     }
 
     div.style("opacity" , "0");
@@ -240,6 +259,8 @@ function clicked(d){
         }
     }
 
+    
+
 
     console.log(arr_country);
     drawPCA();
@@ -251,7 +272,7 @@ function clicked(d){
 function mouseoverUni(d){
     // Highlight hovered province
     if(!arr_uni.includes(d.ETER_ID)){
-        d3.select(this).style('fill','red').style('r' , '2px');
+        d3.select(this).style('fill','red').style('r' , '3px');
     }
 
     console.log(d)
@@ -267,7 +288,7 @@ function mouseoverUni(d){
 
 function mouseoutUni(d){
     if(!arr_uni.includes(d.ETER_ID)){
-        d3.select(this).style('fill', '#735244').style('r','0.5px');
+        d3.select(this).style('fill', 'black').style('r','1px');
     }
     div.style("opacity" , "0");
 }
@@ -358,10 +379,10 @@ function drawMap(){
             .append("circle")
                 .attr("class","university")
                 .attr("transform", d3.select("#map-path").attr('transform'))
-                .attr("fill" , "#735244")
+                .attr("fill" , "black")
                 .attr("cx", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[0];})
                 .attr("cy", function(d) {return projection([d.longitude.replace("," , "."), d.latitude.replace("," , ".")])[1];})
-                .attr("r", "0.5px")
+                .attr("r", "1px")
                 .on('mouseover', mouseoverUni)
                 .on('mouseout', mouseoutUni)
                 .on('click' , mouseClickUni);
@@ -401,7 +422,7 @@ function drawTable(){
         };
 		
 		 var titles_tocatch2 = {
-            institution_name: "vuoto",
+            ETER_ID: "vuoto",
         };
         
         var titles = d3.keys(titles_tocatch);
@@ -418,7 +439,7 @@ function drawTable(){
         .on('click', function (d) {
           var cerca = "";
          if(d == "Institution name"){
-           cerca = "institution_name" ;
+           cerca = "ETER_ID" ;
          } else if (d == "Missing value") {
            cerca = "missing_perc";
          } else if (d == "Consistency"){
@@ -449,7 +470,7 @@ function drawTable(){
                     if(arr_country.length == 0 && arr_uni.length == 0){
                         return d.reference_year == ref_year.value && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency ; 
                     } else {
-                        return (arr_uni.includes(d.ETER_ID) || arr_country.includes(d.institution_name)) && d.reference_year == ref_year.value 
+                        return (arr_uni.includes(d.ETER_ID) || arr_country.includes(d.ETER_ID)) && d.reference_year == ref_year.value 
                         && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency;
                                   
                     }
@@ -537,7 +558,7 @@ function drawTable(){
 	  return Math.trunc(d.value*100)+"%";
 	  else if(d.name=="cons_perc")
 		  return Math.trunc(d.value*100)+"%";
-	  else if(d.name=="institution_name")
+	  else if(d.name=="ETER_ID")
 		  return d.value;
 	  else if(d.name=="timeillnes_occ")
 		  return parseInt(d.value)+" of 7";

@@ -1,4 +1,4 @@
-institution_name,reference_year,missing_perc,zero_value,c_value,s_value,nc_value,cons_perc,timeillnes_occ
+ETER_ID,reference_year,missing_perc,zero_value,c_value,s_value,nc_value,cons_perc,timeillnes_occ
 AL,2011,0.45945945945945954,0.1891891891891892,0.0,0.0,0.0,0.2000000000000001,6.0
 AL,2012,0.4567567567567568,0.1891891891891892,0.0,0.0,0.0,0.2000000000000001,6.0
 AL,2013,0.45789473684210524,0.18421052631578946,0.0,0.0,0.0,0.2000000000000001,5.947368421052632
