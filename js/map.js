@@ -74,13 +74,13 @@ button_uni_clear.onclick = function(){
 
 
 var margin_radar = {
-    top: 50,
+    top: 100,
     right: 100,
     bottom: 100,
-    left: 200
+    left: 50
 },
-    width_radar = Math.min(550, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
-    height_radar = Math.min(350, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
+    width_radar = Math.min(450, window.innerWidth - 10) - margin_radar.left - margin_radar.right,
+    height_radar = Math.min(250, window.innerHeight - margin_radar.top - margin_radar.bottom - 20);
 
 var color = d3.scale.ordinal()
 				.range(["#EDC951","#CC333F","#00A0B0"]);
@@ -320,7 +320,7 @@ function drawPCA(){
     .remove();
 
     
-    d3.csv("data/pca.csv", function(data) {
+    d3.csv("data/fusion_pca.csv", function(data) {
 
         var x = d3.scaleLinear()
         .domain([-0.1e+9, 2.5e+9])
@@ -340,9 +340,10 @@ function drawPCA(){
         .enter()
         .filter(function(d){
             if(arr_country.length == 0 && arr_uni.length == 0){
-                return d.reference_year == ref_year.value;
+                return d.reference_year == ref_year.value && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency;
             } else {
-                return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value;
+                return (arr_country.includes(d.country_code) || arr_uni.includes(d.ETER_ID) ) && d.reference_year == ref_year.value
+                && (d.missing_perc*100) <= filter_missing && ( d.cons_perc * 100)  >= filter_consistency;;
             }
             
         })
@@ -600,11 +601,16 @@ function updateCharts2(e){
     
 }
 
+
+var myColorConsUni = d3.scaleOrdinal()
+.domain(arr_uni)
+.range(d3.schemeCategory10);
+var myColorMissUni= d3.scaleOrdinal()
+.domain(arr_uni)
+.range(d3.schemeSet2);
+
 function drawTimeline(){
-
-    
-
-      
+  
       
 d3.csv("data/statistic_per_uni.csv", function(data) {
 
@@ -667,8 +673,12 @@ datapre = arr_uni.map(function(datax) {
 //console.log(dataReady);
 console.log(datapre);
 // A color scale: one color for each group
-var myColor = d3.scaleOrdinal()
-  .domain(allGroup)
+var myColorMissUni = d3.scaleOrdinal()
+  .domain(arr_uni)
+  .range(d3.schemeCategory10);
+
+var myColorConsUni = d3.scaleOrdinal()
+  .domain(arr_uni)
   .range(d3.schemeSet2);
 
 var years = [2011,2017];
@@ -693,7 +703,7 @@ svg6.selectAll("myLines")
   .enter()
   .append("path")
     .attr("d", function(d){ console.log(d.roba[0].values); return line(d.roba[0].values); } )
-    .attr("stroke", function(d){ return myColor(d.roba[0].name) })
+    .attr("stroke", function(d){ return myColorMissUni(d.eter_id) })
     .attr("id" , "line-uni")
     .style("stroke-width", 2)
     .style("fill", "none")
@@ -705,7 +715,7 @@ svg6.selectAll("myLines")
     .enter()
     .append("path")
       .attr("d", function(d){ console.log(d.roba[1].values); return line(d.roba[1].values); } )
-      .attr("stroke", function(d){ return myColor(d.roba[1].name) })
+      .attr("stroke", function(d){ return myColorConsUni(d.eter_id) })
       .attr("id" , "line-uni")
       .style("stroke-width", 2)
       .style("fill", "none")
@@ -718,7 +728,7 @@ svg6.selectAll("myLines")
     .data(datapre)
     .enter()
       .append('g')
-      .style("fill", function(d){ return myColor(d.roba[0].name) })
+      .style("fill", function(d){ return myColorMissUni(d.eter_id) })
     // Second we need to enter in the 'values' part of this group
     .selectAll("myPoints")
     .data(function(d){ return d.roba[0].values })
@@ -736,7 +746,7 @@ svg6.selectAll("myLines")
       .data(datapre)
       .enter()
         .append('g')
-        .style("fill", function(d){ return myColor(d.roba[1].name) })
+        .style("fill", function(d){ return myColorConsUni(d.eter_id) })
       // Second we need to enter in the 'values' part of this group
       .selectAll("myPoints")
       .data(function(d){ return d.roba[1].values })
@@ -748,7 +758,7 @@ svg6.selectAll("myLines")
         .attr("id" , "point-uni")
         .attr("stroke", "white")
 
-
+    
 
 });
 
@@ -814,10 +824,16 @@ datapre = arr_country.map(function(datax) {
 //console.log(dataReady);
 console.log("arrivo");
 console.log(datapre);
+
+console.log(arr_country);
 // A color scale: one color for each group
-var myColor = d3.scaleOrdinal()
-  .domain(allGroup)
-  .range(d3.schemeSet2);
+var myColorMissing = d3.scaleOrdinal()
+  .domain(arr_country)
+  .range(d3.schemePastel1);
+
+var myColorCons = d3.scaleOrdinal()
+  .domain(arr_country)
+  .range(d3.schemeDark2);
 
 var years = [2011,2017];
 // Add X axis --> it is a date format
@@ -841,7 +857,7 @@ svg6.selectAll("myLines")
   .enter()
   .append("path")
     .attr("d", function(d){ console.log(d.roba[0].values); return line(d.roba[0].values); } )
-    .attr("stroke", function(d){ return myColor(d.roba[0].name) })
+    .attr("stroke", function(d){ return myColorMissing(d.country_code) })
     .attr("id" , "line-country-timeline")
     .style("stroke-width", 2)
     .style("fill", "none")
@@ -853,7 +869,7 @@ svg6.selectAll("myLines")
     .enter()
     .append("path")
       .attr("d", function(d){ console.log(d.roba[1].values); return line(d.roba[1].values); } )
-      .attr("stroke", function(d){ return myColor(d.roba[1].name) })
+      .attr("stroke", function(d){ return myColorCons(d.country_code) })
       .attr("id" , "line-country-timeline")
       .style("stroke-width", 2)
       .style("fill", "none")
@@ -867,7 +883,7 @@ svg6.selectAll("myLines")
     .data(datapre)
     .enter()
       .append('g')
-      .style("fill", function(d){ return myColor(d.roba[0].name) })
+      .style("fill", function(d){ return myColorMissing(d.country_code) })
     // Second we need to enter in the 'values' part of this group
     .selectAll("myPoints")
     .data(function(d){ return d.roba[0].values })
@@ -885,7 +901,7 @@ svg6.selectAll("myLines")
       .data(datapre)
       .enter()
         .append('g')
-        .style("fill", function(d){ return myColor(d.roba[1].name) })
+        .style("fill", function(d){ return myColorCons(d.country_code) })
       // Second we need to enter in the 'values' part of this group
       .selectAll("myPoints")
       .data(function(d){ return d.roba[1].values })
@@ -897,7 +913,7 @@ svg6.selectAll("myLines")
         .attr("id" , "point-country-timeline")
         .attr("stroke", "white")
 
-
+    displayLegend(myColorMissing , myColorCons);
 
 });
 
@@ -907,7 +923,30 @@ svg6.selectAll("myLines")
 }
             
 
+function displayLegend(m , c){
 
+    d3.selectAll("#timelinelegend").remove();
+
+    var i = 20;
+
+    arr_country.forEach(element => {
+        
+        d3.select("#timeline-svg").append("text").attr("id", "timelinelegend").attr("x", 0).attr("y", 90+i).text(element).style("font-size", "10px").attr("alignment-baseline","middle");
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 5).style("fill", function(){ return m(element) } );
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 5).style("fill",  function(){ return c(element) });
+        
+        i=i+20;
+    });
+
+    arr_uni.forEach(element => {
+        
+        d3.select("#timeline-svg").append("text").attr("id", "timelinelegend").attr("x", 0).attr("y", 90+i).text(element).style("font-size", "10px").attr("alignment-baseline","middle");
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 5).style("fill", function(){ return myColorConsUni(element) } );
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 5).style("fill",  function(){ return myColorMissUni(element) });
+        
+        i=i+20;
+    });
+}
 
 
 
@@ -916,7 +955,9 @@ svg6.selectAll("myLines")
 
 function mouseoverLine(d){
 
-    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+   if (legend == 1){
+  d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+   }
   d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
   d3.selectAll("#line-uni").style("opacity" , 0.5);
 
@@ -927,15 +968,16 @@ function mouseoverLine(d){
     div_timeline.transition()		
             .duration(200)		
             .style("opacity", .8);	
-        div_timeline.html(d.roba[0].values[0].isti_name)	
+        div_timeline.html(d.roba[0].values[0].isti_name + "<br> " + d.eter_id)	
             .style("left", (d3.event.pageX) + "px")		
             .style("top", (d3.event.pageY - 100) + "px");
 
 }
 
 function mouseoutLine(d){
-
+    if (legend == 1){
     d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+    }
   d3.selectAll("#line-country-timeline").style("opacity" , 1);
   d3.selectAll("#line-uni").style("opacity" , 1);
     
@@ -947,7 +989,9 @@ function mouseoutLine(d){
 
 function mouseoverLineCountry(d){
 
-    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+  if(legend==1){  
+  d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+  }
   d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
   d3.selectAll("#line-uni").style("opacity" , 0.5);
 
@@ -966,7 +1010,9 @@ function mouseoverLineCountry(d){
 
 function mouseoutLineCountry(d){
     
+    if(legend==1){
     d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+    }
     d3.selectAll("#line-country-timeline").style("opacity" , 1);
     d3.selectAll("#line-uni").style("opacity" , 1);
 

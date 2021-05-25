@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
-var margin6 = {top: 70, right: 10, bottom: 50, left: 70},
-    width6 = 600 - margin6.left - margin6.right,
+var margin6 = {top: 70, right: 50, bottom: 50, left: 250},
+    width6 = 800 - margin6.left - margin6.right,
     height6 = 400 - margin6.top - margin6.bottom;
 
 // append the svg object to the body of the page
@@ -13,11 +13,19 @@ var svg6 = d3.select("#timeline")
     .attr("transform",
           "translate(" + margin6.left + "," + margin6.top + ")");
 
-d3.select("#timeline-svg").append("circle").attr("cx",50).attr("cy",30).attr("r", 6).style("fill", "#69b3a2"); //missing perc
-d3.select("#timeline-svg").append("circle").attr("cx",250).attr("cy",30).attr("r", 6).style("fill", "orange"); //consistency
-d3.select("#timeline-svg").append("text").attr("x", 70).attr("y", 30).text("% missing value").style("font-size", "15px").attr("alignment-baseline","middle");
-d3.select("#timeline-svg").append("text").attr("x", 270).attr("y", 30).text("% consistency").style("font-size", "15px").attr("alignment-baseline","middle");       
-          
+var legend = 1;
+ //missing perc
+ //consistency
+d3.select("#timeline-svg").append("text").attr("x", 70).attr("y", 30).text("Legend").style("font-size", "20px").attr("alignment-baseline","middle");
+d3.select("#timeline-svg").append("text").attr("x", 60).attr("y", 60).text("%miss").style("font-size", "10px").attr("alignment-baseline","middle"); 
+d3.select("#timeline-svg").append("text").attr("x", 130).attr("y", 60).text("%cons").style("font-size", "10px").attr("alignment-baseline","middle");      
+
+d3.select("#timeline-svg").append("text").attr("id" , "all-legend").attr("x", 0).attr("y", 90).text("All").style("font-size", "10px").attr("alignment-baseline","middle");
+d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",80).attr("cy",85).attr("r", 5).style("fill", "#e41a1c");
+d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",150).attr("cy",85).attr("r", 5).style("fill", "#377eb8");
+
+
+
 d3.csv("data/stastic_per_entiredb.csv", function(data) {
 
     // List of groups (here I have one group per column)
@@ -41,7 +49,7 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
-      .range(d3.schemeSet2);
+      .range(d3.schemeSet1);
 
     var years = [2011,2017];
     // Add X axis --> it is a date format
@@ -115,33 +123,67 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
 });
 
 function mouseoverLineEntiredb(d){
-
-  d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
-  d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
-  d3.selectAll("#line-uni").style("opacity" , 0.5);
-    
-  d3.select(this).style('stroke-width', 8).style('opacity', 0.7);
   
+  if(legend==1){
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0.5);
+    
+    d3.select(this).style('stroke-width', 8).style('opacity', 0.7);
 
-  div_timeline.transition()		
+    div_timeline.transition()		
           .duration(200)		
           .style("opacity", .8);	
       div_timeline.html("All")	
           .style("left", (d3.event.pageX) + "px")		
           .style("top", (d3.event.pageY - 100) + "px");
+  }
+  d3.selectAll("#line-country-timeline").style("opacity" , 0.5);
+  d3.selectAll("#line-uni").style("opacity" , 0.5);
+    
+
+  
+
+ 
 
 }
 
 function mouseoutLineEntiredb(d){
-  
-  d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+  if(legend==1){
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+    
+    d3.select(this).style('stroke-width', 4).style('opacity', 1);
+    div_timeline.style("opacity" , 0);
+
+  }
   d3.selectAll("#line-country-timeline").style("opacity" , 1);
   d3.selectAll("#line-uni").style("opacity" , 1);
 
 
-  d3.select(this).style('stroke-width', 4).style('opacity', 1);
+  
 
-  div_timeline.style("opacity" , 0);
+  
 
 }
 
+
+button_remove_all = document.getElementById("legend-clear");
+
+button_remove_all.onclick = function(){
+
+  if(legend == 1){
+
+    d3.selectAll("#all-legend").style("opacity" , 0);
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 0);
+    d3.selectAll("#point-entiredb-timeline").style("opacity" , 0);
+    legend = 0;
+
+    button_remove_all.innerHTML = "Display All";
+    
+  } else {
+
+    d3.selectAll("#all-legend").style("opacity" , 1);
+    d3.selectAll("#line-entire-db-timeline").style("opacity" , 1);
+    d3.selectAll("#point-entiredb-timeline").style("opacity" , 1);
+    button_remove_all.innerHTML = "Remove All";
+    legend=1;
+  }
+};

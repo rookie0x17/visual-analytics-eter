@@ -19,7 +19,7 @@ var div = d3.select("#pca-chart").append("div")
   .attr("class", "tooltip")				
   .style("opacity", 0);
 
-  d3.csv("data/pca.csv", function(data) {
+  d3.csv("data/fusion_pca.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
