@@ -395,7 +395,118 @@ function drawMap(){
 
 }
 
+function drawAVG(a1 , a2 , a3 , myColor , myColor2){
+
+    var total = 0;
+    for(var i = 0; i < a1.length; i++) {
+        total += a1[i];
+    }
+    var datamiss = Math.trunc(total / a1.length);
+
+    var total = 0;
+    for(var i = 0; i < a2.length; i++) {
+        total += a2[i];
+    }
+    var datacons = Math.trunc(total / a2.length);
+
+    var total = 0;
+    for(var i = 0; i < a3.length; i++) {
+        total += a3[i];
+    }
+    var dataill = (total / a3.length);
+    
+
+    d3.select('tbody').append('tr').attr('id', 'avg-row').attr('class', 'row-line');
+
+    var bar1 = d3.select("#avg-row").append('td').attr("id" , "td-avg").append("svg").attr("width", 100)
+    .attr("height", 20);
+
+    bar1.append("text")
+    .attr("x", 15)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+	.text(function(d) { 
+	  return "Average"});
+
+    var bar2 =   d3.select("#avg-row").append('td').attr("id" , "td-avg")
+      .append("svg").attr("width", 100)
+      .attr("height", 20);
+    
+      bar2.append("rect")
+      .attr('id','bars')
+      .attr("height", 20)
+	   .style("fill", function() { 
+	   return myColor(datamiss);
+   } )
+      .attr("width", function() { 
+	   return datamiss;
+      
+	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");
+
+    bar2.append("text")
+    .attr("x", 15)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+	.text(function() { 
+	  return datamiss+"%"; });
+    
+
+
+     var bar3 = d3.select("#avg-row").append('td').attr("id" , "td-avg").attr("id" , "td-avg")
+      .append("svg").attr("width", 100).attr("height", 20);
+
+      bar3.append("rect")
+      .attr('id','bars')
+      .attr("height", 20)
+	   .style("fill", function() { 
+	   return myColor2(datacons);
+   } )
+      .attr("width", function() { 
+	   return datacons;
+      
+	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");
+
+    bar3.append("text")
+    .attr("x", 15)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+	.text(function() { 
+	  return datacons+"%"; });
+     
+      
+      var bar4 = d3.select("#avg-row").append('td').attr("id" , "td-avg").attr("id" , "td-avg")
+      .append("svg").attr("width", 100).attr("height", 20);
+
+      bar4.append("rect")
+      .attr('id','bars')
+      .attr("height", 20)
+	   .style("fill", function() { 
+	   return myColor2(dataill*14);
+   } )
+      .attr("width", function() { 
+	   return dataill * 14;
+      
+	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");
+
+    bar4.append("text")
+    .attr("x", 15)
+    .attr("y", 10)
+    .attr("dy", ".35em")
+	.text(function() { 
+	  return parseInt(dataill)+" of 7"; });
+      
+
+    
+    
+
+    
+}
+
 function drawTable(){
+
+    var arr_miss = [];
+    var arr_cons = [];
+    var arr_timeill = [];
 
     if(document.getElementById("marcatore")== null){
         return;
@@ -541,12 +652,18 @@ function drawTable(){
 			 return myColor2(d.value*14);
    } )
       .attr("width", function(d) { 
-	  if(d.name=="missing_perc")
+	  if(d.name=="missing_perc"){
+        arr_miss.push(d.value*100);
 	  return d.value*100;
-	  else if(d.name=="cons_perc")
+      }
+	  else if(d.name=="cons_perc"){
+          arr_cons.push(d.value*100);
 		  return d.value*100;
-	  else if(d.name=="timeillnes_occ")
+    }
+	  else if(d.name=="timeillnes_occ"){
+            arr_timeill.push(d.value*1);
 		  return d.value*14;
+      }
 	}).style("stroke-width" , "1").style("stroke" , "black").attr("rx" , "3").attr("ry" , "3");;
 
   bar.append("text")
@@ -566,19 +683,16 @@ function drawTable(){
 		});
 		
 	
+        drawAVG(arr_miss , arr_cons , arr_timeill , myColor , myColor2);
+    
 	
     });
 
-
     
 
-
-
-
-
-
-
 }
+
+
 
 
 ref_year.addEventListener('change', updateCharts);
