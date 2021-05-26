@@ -8,6 +8,14 @@ RadarChart("#radial", init_c,init_u, radarChartOptions);
 
 function RadarChart(id, data_uni, data_count, options) {
 	
+	if(data_uni.length>=25){
+		data_uni=[];
+		console.log("ok");
+		}
+	if(data_count.length>=6){
+		data_count=[];
+		console.log("ok");
+		}
 	d3.csv("data/FINALE.csv", function(data){
 
 	// console.log(flag)
@@ -448,15 +456,15 @@ function RadarChart(id, data_uni, data_count, options) {
 				value: parseFloat(output[i][14])
 			},
 			{
-				axis: "total_current_revenue",
+				axis: "total current revenue",
 				value: parseFloat(output[i][18])
 			},
 			{
-				axis: "total_third_party_funding",
+				axis: "total third party funding",
 				value: parseFloat(output[i][15])
 			},
 			{
-				axis: "student_fees_funding",
+				axis: "student fees funding",
 				value: parseFloat(output[i][16])
 			}
 
@@ -600,7 +608,30 @@ function RadarChart(id, data_uni, data_count, options) {
 			
 			
 			
-			
+			newdata2.push([{
+				axis: "total current expenditure",
+				value: parseFloat(media )
+			},
+			{
+				axis: "total core budget",
+				value: parseFloat(media2)
+			},
+			{
+				axis: "total current revenue",
+				value: parseFloat(media3)
+			},
+			{
+				axis: "total third party funding",
+				value: parseFloat(media4)
+			},
+			{
+				axis: "student fees funding",
+				value: parseFloat(media5)
+			}
+
+
+
+			])
 			newdata2.push([{
 				axis: "total current expenditure",
 				value: parseFloat(mediatot )
@@ -626,36 +657,13 @@ function RadarChart(id, data_uni, data_count, options) {
 
 			])
 			
-			newdata2.push([{
-				axis: "total current expenditure",
-				value: parseFloat(media )
-			},
-			{
-				axis: "total core budget",
-				value: parseFloat(media2)
-			},
-			{
-				axis: "total current revenue",
-				value: parseFloat(media3)
-			},
-			{
-				axis: "total third party funding",
-				value: parseFloat(media4)
-			},
-			{
-				axis: "student fees funding",
-				value: parseFloat(media5)
-			}
-
-
-
-			])
+			
 			
 			
 			for (i = 0; i < newdata.length; i++) {
 			for (j=0; j<data_uni.length; j++) {
 			if(output[i][1]==data_uni[j]){
-				console.log("ok");
+				
 			newdata2.push([{
 				axis: "total current expenditure",
 				value: parseFloat(output[i][12] )
@@ -889,30 +897,7 @@ function RadarChart(id, data_uni, data_count, options) {
 			
 			
 			
-			newdata2.push([{
-				axis: "total academic staff",
-				value: parseFloat(mediatot21 )
-			},
-			{
-				axis: "total student enrolled ISCED 5-7",
-				value: parseFloat(mediatot22)
-			},
-			{
-				axis: "total graduated ISCED 5-7",
-				value: parseFloat(mediatot32)
-			},
-			{
-				axis: "total student enrolled ISCED 8",
-				value: parseFloat(mediatot42)
-			},
-			{
-				axis: "total graduated ISCED 8",
-				value: parseFloat(mediatot52)
-			}
-
-
-
-			])
+			
 			
 			newdata2.push([{
 				axis: "total academic staff",
@@ -933,6 +918,31 @@ function RadarChart(id, data_uni, data_count, options) {
 			{
 				axis: "total graduated ISCED 8",
 				value: parseFloat(media5)
+			}
+
+
+
+			])
+			
+			newdata2.push([{
+				axis: "total academic staff",
+				value: parseFloat(mediatot21 )
+			},
+			{
+				axis: "total student enrolled ISCED 5-7",
+				value: parseFloat(mediatot22)
+			},
+			{
+				axis: "total graduated ISCED 5-7",
+				value: parseFloat(mediatot32)
+			},
+			{
+				axis: "total student enrolled ISCED 8",
+				value: parseFloat(mediatot42)
+			},
+			{
+				axis: "total graduated ISCED 8",
+				value: parseFloat(mediatot52)
 			}
 
 
@@ -1158,26 +1168,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			
 			
 			
-			newdata2.push([{
-				axis: "share of woman academic staff",
-				value: parseFloat(mediatot31)
-			},
-			{
-				axis: "share of women students ISCED 5-7",
-				value: parseFloat(mediatot23)
-			},
-			{
-				axis: "share of foreign students ISCED 5-7",
-				value: parseFloat(mediatot33)
-			},
-			{
-				axis: "PhD intensity",
-				value: parseFloat(mediatot43)
-			}
-
-
-
-			])
+	
 			
 			newdata2.push([{
 				axis: "share of woman academic staff",
@@ -1195,6 +1186,27 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			{
 				axis: "PhD intensity",
 				value: parseFloat(media4)
+			}
+
+
+
+			])
+			
+				newdata2.push([{
+				axis: "share of woman academic staff",
+				value: parseFloat(mediatot31)
+			},
+			{
+				axis: "share of women students ISCED 5-7",
+				value: parseFloat(mediatot23)
+			},
+			{
+				axis: "share of foreign students ISCED 5-7",
+				value: parseFloat(mediatot33)
+			},
+			{
+				axis: "PhD intensity",
+				value: parseFloat(mediatot43)
 			}
 
 
@@ -1293,7 +1305,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 	 maxValue: 0, 			//What is the value that the biggest circle will represent
 	 labelFactor: 1.25, 	//How much farther than the radius of the outer circle should the labels be placed
 	 wrapWidth: 60, 		//The number of pixels after which a label needs to be given a new line
-	 opacityArea: 0.35, 	//The opacity of the area of the blob
+	 opacityArea: 0, 	//The opacity of the area of the blob
 	 dotRadius: 4, 			//The size of the colored circles of each blog
 	 opacityCircles: 0.1, 	//The opacity of the circles of each blob
 	 strokeWidth: 2, 		//The width of the stroke around each blob
@@ -1532,7 +1544,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 			//Dim all blobs
 			d3.selectAll(".radarArea")
 				.transition().duration(200)
-				.style("fill-opacity", 0.1); 
+				.style("fill-opacity", 0); 
 			//Bring back the hovered over blob
 			d3.select(this)
 				.transition().duration(200)
@@ -1581,7 +1593,7 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 	blobCircleWrapper.selectAll(".radarInvisibleCircle")
 		.data(function(d,i) { return d; })
 		.enter().append("circle")
-		.attr("class", "radarInvisibleCircle")
+		.attr("class",  "radarArea")
 		.attr("r", cfg.dotRadius*1.5)
 		.attr("cx", function(d,i){ return rScale(d.value) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("cy", function(d,i){ return rScale(d.value) * Math.sin(angleSlice*i - Math.PI/2); })
@@ -1596,7 +1608,17 @@ if((data_uni.length == 0 && data_count.length == 0) || out.length>=25){
 				.attr('y', newY)
 				.text(Format(d.value))
 				.transition().duration(200)
-				.style('opacity', 1);
+				.style('opacity', 1)
+				
+			z="path."+d3.select(this).attr("class");
+			d3.selectAll(".radarArea")
+				.transition().duration(200)
+				.style("fill-opacity", 0); 
+			//Bring back the hovered over blob
+			g.select(z)
+				.transition(200)
+				.style("fill-opacity", 0.7);
+				
 		})
 		.on("mouseout", function(){
 			tooltip.transition().duration(200)

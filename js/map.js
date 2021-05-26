@@ -507,6 +507,8 @@ function drawTable(){
     var arr_miss = [];
     var arr_cons = [];
     var arr_timeill = [];
+	var a=[];
+	var b=[];
 
     if(document.getElementById("marcatore")== null){
         return;
@@ -623,6 +625,13 @@ function drawTable(){
           return d.name;
       })
       .text(function (d) {
+          if(d.value.length>2){
+			 console.log(d.value);
+			a.push(d.value);
+		  }
+		  else{
+			  b.push(d.value);
+		  }
           return d.value;
       })
       .style("allign" , "center"); 
@@ -682,7 +691,7 @@ function drawTable(){
 		  return parseInt(d.value)+" of 7";
 		});
 		
-	
+		RadarChart("#radial", a ,b, radarChartOptions);
         drawAVG(arr_miss , arr_cons , arr_timeill , myColor , myColor2);
     
 	
