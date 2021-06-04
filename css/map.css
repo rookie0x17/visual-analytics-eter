@@ -53,7 +53,7 @@ div.tooltip {
       background: #eee; 
   }
   th { 
-      background: #333; 
+      background: blue; 
       color: white; 
       font-weight: bold; 
       cursor: s-resize;

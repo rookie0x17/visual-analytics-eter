@@ -320,16 +320,16 @@ function drawPCA(){
     .remove();
 
     
-    d3.csv("data/fusion_pca.csv", function(data) {
+    d3.csv("data/pca.csv", function(data) {
 
         var x = d3.scaleLinear()
-        .domain([-0.1e+9, 2.5e+9])
-        .range([ 0, width*2.3 ]);
+        .domain([-1e+4, 8e+4])
+        .range([ 0, width-20 ]);
      
     
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain([-600e+2, 300e+3])
+        .domain([-1.4e+4, 6e+3])
         .range([ height, 0]);
     
 

@@ -19,16 +19,16 @@ var div = d3.select("#pca-chart").append("div")
   .attr("class", "tooltip")				
   .style("opacity", 0);
 
-  d3.csv("data/fusion_pca.csv", function(data) {
+  d3.csv("data/pca.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([-0.1e+9, 2.5e+9])
-    .range([ 0, width*2.3 ]);
+    .domain([-1e+4, 8e+4])
+    .range([ 0, width -20 ]);
   svg1.append("g")
     .attr("id" , "x")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(10));
 
     svg1.append("text")             
       .attr("transform",
@@ -39,11 +39,11 @@ var div = d3.select("#pca-chart").append("div")
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([-600e+2, 300e+3])
+    .domain([-1.4e+4, 6e+3])
     .range([ height, 0]);
   svg1.append("g")
     .attr("id" , "y")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y).ticks(10));
 
     svg1.append("text")
       .attr("transform", "rotate(-90)")
