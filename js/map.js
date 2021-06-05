@@ -203,7 +203,7 @@ function mouseOverCount(d){
         to_prove = "UK";
     }
 
-
+    d3.selectAll("."+to_prove).style("fill" , "blue").attr("r" , 3);
 
     if(!arr_country.includes(to_prove ) ){
         d3.select(this).style('fill', '#01665e');
@@ -229,6 +229,7 @@ function mouseOutCount(d){
         to_prove = "UK";
     }
 
+    d3.selectAll("." + to_prove).style("fill" , "#69b3a2").attr("r" , 1.5);
 
     if(!arr_country.includes(to_prove )){
         d3.select(this).style('fill', '#d8b365');
@@ -280,7 +281,7 @@ function mouseoverUni(d){
     div.transition()		
         .duration(200)		
         .style("opacity", .8);	
-    div.html(d.institution_name)	
+    div.html(d.institution_name +"<br>"+ d.ETER_ID)	
         .style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY - 100) + "px");		
 
@@ -725,14 +726,18 @@ function updateCharts2(e){
 }
 
 
-var myColorConsUni = d3.scaleOrdinal()
-.domain(arr_uni)
-.range(d3.schemeCategory10);
-var myColorMissUni= d3.scaleOrdinal()
-.domain(arr_uni)
-.range(d3.schemeSet2);
+
 
 function drawTimeline(){
+
+    var union_array = arr_uni.concat(arr_country);
+
+    var myColorMissUni= d3.scaleOrdinal()
+    .domain(union_array)
+    .range(d3.schemeSet1);
+    var myColorConsUni = d3.scaleOrdinal()
+    .domain(union_array)
+    .range(d3.schemePastel1);
   
       
 d3.csv("data/statistic_per_uni.csv", function(data) {
@@ -796,13 +801,13 @@ datapre = arr_uni.map(function(datax) {
 //console.log(dataReady);
 console.log(datapre);
 // A color scale: one color for each group
-var myColorMissUni = d3.scaleOrdinal()
+/*var myColorMissUni = d3.scaleOrdinal()
   .domain(arr_uni)
   .range(d3.schemeCategory10);
 
 var myColorConsUni = d3.scaleOrdinal()
   .domain(arr_uni)
-  .range(d3.schemeSet2);
+  .range(d3.schemeSet2);*/
 
 var years = [2011,2017];
 // Add X axis --> it is a date format
@@ -980,7 +985,7 @@ svg6.selectAll("myLines")
   .enter()
   .append("path")
     .attr("d", function(d){ console.log(d.roba[0].values); return line(d.roba[0].values); } )
-    .attr("stroke", function(d){ return myColorMissing(d.country_code) })
+    .attr("stroke", function(d){ return myColorMissUni(d.country_code) })
     .attr("id" , "line-country-timeline")
     .style("stroke-width", 2)
     .style("fill", "none")
@@ -992,7 +997,7 @@ svg6.selectAll("myLines")
     .enter()
     .append("path")
       .attr("d", function(d){ console.log(d.roba[1].values); return line(d.roba[1].values); } )
-      .attr("stroke", function(d){ return myColorCons(d.country_code) })
+      .attr("stroke", function(d){ return myColorConsUni(d.country_code) })
       .attr("id" , "line-country-timeline")
       .style("stroke-width", 2)
       .style("fill", "none")
@@ -1006,7 +1011,7 @@ svg6.selectAll("myLines")
     .data(datapre)
     .enter()
       .append('g')
-      .style("fill", function(d){ return myColorMissing(d.country_code) })
+      .style("fill", function(d){ return myColorMissUni(d.country_code) })
     // Second we need to enter in the 'values' part of this group
     .selectAll("myPoints")
     .data(function(d){ return d.roba[0].values })
@@ -1024,7 +1029,7 @@ svg6.selectAll("myLines")
       .data(datapre)
       .enter()
         .append('g')
-        .style("fill", function(d){ return myColorCons(d.country_code) })
+        .style("fill", function(d){ return myColorConsUni(d.country_code) })
       // Second we need to enter in the 'values' part of this group
       .selectAll("myPoints")
       .data(function(d){ return d.roba[1].values })
@@ -1036,7 +1041,7 @@ svg6.selectAll("myLines")
         .attr("id" , "point-country-timeline")
         .attr("stroke", "white")
 
-    displayLegend(myColorMissing , myColorCons);
+    displayLegend(myColorMissUni , myColorConsUni);
 
 });
 
@@ -1046,7 +1051,7 @@ svg6.selectAll("myLines")
 }
             
 
-function displayLegend(m , c){
+function displayLegend(m,c){
 
     d3.selectAll("#timelinelegend").remove();
 
@@ -1055,8 +1060,8 @@ function displayLegend(m , c){
     arr_country.forEach(element => {
         
         d3.select("#timeline-svg").append("text").attr("id", "timelinelegend").attr("x", 0).attr("y", 90+i).text(element).style("font-size", "10px").attr("alignment-baseline","middle");
-        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 5).style("fill", function(){ return m(element) } );
-        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 5).style("fill",  function(){ return c(element) });
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 7).style("fill", function(){ return m(element); } );
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 7).style("fill",  function(){ return c(element); });
         
         i=i+20;
     });
@@ -1064,11 +1069,12 @@ function displayLegend(m , c){
     arr_uni.forEach(element => {
         
         d3.select("#timeline-svg").append("text").attr("id", "timelinelegend").attr("x", 0).attr("y", 90+i).text(element).style("font-size", "10px").attr("alignment-baseline","middle");
-        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 5).style("fill", function(){ return myColorConsUni(element) } );
-        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 5).style("fill",  function(){ return myColorMissUni(element) });
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",80).attr("cy",85+i).attr("r", 7).style("fill", function(){ return m(element) ;} );
+        d3.select("#timeline-svg").append("circle").attr("id", "timelinelegend").attr("cx",150).attr("cy",85+i).attr("r", 7).style("fill",  function(){ return c(element); });
         
         i=i+20;
     });
+    
 }
 
 

@@ -21,8 +21,8 @@ d3.select("#timeline-svg").append("text").attr("x", 60).attr("y", 60).text("%mis
 d3.select("#timeline-svg").append("text").attr("x", 130).attr("y", 60).text("%cons").style("font-size", "10px").attr("alignment-baseline","middle");      
 
 d3.select("#timeline-svg").append("text").attr("id" , "all-legend").attr("x", 0).attr("y", 90).text("All").style("font-size", "10px").attr("alignment-baseline","middle");
-d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",80).attr("cy",85).attr("r", 5).style("fill", "#e41a1c");
-d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",150).attr("cy",85).attr("r", 5).style("fill", "#377eb8");
+d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",80).attr("cy",85).attr("r", 7).style("fill", "black");
+d3.select("#timeline-svg").append("circle").attr("id" , "all-legend").attr("cx",150).attr("cy",85).attr("r", 7).style("fill", "orange");
 
 
 
@@ -93,7 +93,7 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
       .enter()
       .append("path")
         .attr("d", function(d){ return line(d.values) } )
-        .attr("stroke", function(d){ return myColor(d.name) })
+        .attr("stroke", function(d){ if (d.name == "missing_perc" ) return "black"; else return "orange"; })
         .attr("id" , "line-entire-db-timeline")
         .style("stroke-width", 4)
         .style("fill", "none")
@@ -106,7 +106,7 @@ d3.csv("data/stastic_per_entiredb.csv", function(data) {
         .data(dataReady)
         .enter()
           .append('g')
-          .style("fill", function(d){ return myColor(d.name) })
+          .style("fill", function(d){ if (d.name == "missing_perc" ) return "black"; else return "orange"; })
         // Second we need to enter in the 'values' part of this group
         .selectAll("myPoints")
         .data(function(d){ return d.values })
