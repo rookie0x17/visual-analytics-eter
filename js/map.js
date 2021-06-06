@@ -4,6 +4,7 @@ ref_year = document.getElementById("ref_year");
 button_country_clear = document.getElementById("country-clear");
 button_uni_clear = document.getElementById("uni-clear");
 type= document.getElementById("var-select")
+type2= document.getElementById("total")
 
 //slider
 
@@ -74,7 +75,7 @@ button_uni_clear.onclick = function(){
 
 
 var margin_radar = {
-    top: 100,
+    top: 50,
     right: 100,
     bottom: 100,
     left: 50
@@ -1150,6 +1151,14 @@ function mouseoutLineCountry(d){
 
     div_timeline.style("opacity" , 0);
 
+}
+
+type2.addEventListener('change', updateCharts3);
+function updateCharts3(e){
+    console.log(e.target.value);
+   
+	RadarChart("#radial", arr_uni,arr_country, radarChartOptions);
+    
 }
 
 
