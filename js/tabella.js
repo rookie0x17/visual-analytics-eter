@@ -136,7 +136,7 @@ rows.selectAll('td')
 	  else if(d.name=="institution_name")
 		  return d.value;
 	  else if(d.name=="timeillnes_occ")
-		  return parseInt(d.value)+" of 7";
+		  return Math.ceil(d.value)+" of 7";
 		});
 		
 	

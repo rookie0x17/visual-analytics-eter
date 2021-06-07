@@ -495,7 +495,7 @@ function drawAVG(a1 , a2 , a3 , myColor , myColor2){
     .attr("y", 10)
     .attr("dy", ".35em")
 	.text(function() { 
-	  return parseInt(dataill)+" of 7"; });
+	  return Math.ceil(dataill)+" of 7"; });
       
 
     
@@ -690,7 +690,7 @@ function drawTable(){
 	  else if(d.name=="ETER_ID")
 		  return d.value;
 	  else if(d.name=="timeillnes_occ")
-		  return parseInt(d.value)+" of 7";
+		  return Math.ceil(d.value)+" of 7";
 		});
 		
 		RadarChart("#radial", a ,b, radarChartOptions);
